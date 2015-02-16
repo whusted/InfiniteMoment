@@ -7,6 +7,7 @@
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
+var DbSpecs = require('../config.js');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -16,7 +17,7 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 7777;        // set our port
 
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://willy:husted@ds041831.mongolab.com:41831/bears');
+mongoose.connect(DbSpecs);
 
 
 // ROUTES FOR OUR API
