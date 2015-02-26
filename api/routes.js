@@ -18,7 +18,30 @@ router.get('/', function (req, res) {
 });
 
 router.post('/signup', function (req, res) {
-    var payload = req.body;
+  var payload = req.body;
 });
+
+router.post('/login', function(req, res) {
+  var payload = req.body;
+});
+
+router.get('/user/:id', function(req, res) {
+  var payload = req.body;
+});
+
+// post to new conversation
+router.post('/moments', function(req, res) {
+  var payload = req.body;
+})
+
+  // get existing conversation
+  .get('/moments/:id', function(req, res) {
+    var payload = req.body;
+  })
+  
+  // post to existing conversation
+  .post('/moments/:id', function(req, res) {
+    var payload = req.body;
+  });
 
 module.exports = router;
