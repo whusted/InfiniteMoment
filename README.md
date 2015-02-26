@@ -2,4 +2,4 @@
 
 ### Scheduled Content Sharing
 
-#### Send messages into the future
+#### Talk to the future
