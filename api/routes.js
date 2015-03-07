@@ -18,9 +18,14 @@ var routes = [
         }
       },
       handler: function(request, reply) {
-          var user = request.payload;
-          if (user.password !== user.confirmPassword) {
-            reply("Passwords must match").code(400);
+        var user = request.payload;
+        if (user.password !== user.confirmPassword) {
+          reply("Passwords must match").code(400);
+        }
+
+        User.find({handle: user.handle}, function(err, found) {
+          if (found.length) {
+            reply("Handle already exists").code(409);
           } else {
             Bcrypt.genSalt(10, function(err, salt) {
               Bcrypt.hash(user.password, salt, function(err, hash) {
@@ -39,7 +44,8 @@ var routes = [
               });
             });
           }
-      }
+        });
+      } 
     },
 
     {
@@ -47,10 +53,10 @@ var routes = [
       path: '/login',
       config: {
         validate: {
-          payload: {
+          payload: Joi.object({
               username: Joi.string().min(3).max(20).required(),
               password: Joi.string().alphanum().required()
-          }
+          }).unknown(false)
         }
       },
       handler: function (request, reply) {
