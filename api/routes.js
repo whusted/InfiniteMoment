@@ -9,19 +9,18 @@ var routes = [
       path: '/signup',
       config: {
         validate: {
-          payload: {
+          payload: Joi.object({
               name: Joi.string().min(3).max(50).required(),
               handle: Joi.string().min(3).max(20).required(),
               password: Joi.string().alphanum().min(8).max(50).required(),
               confirmPassword: Joi.string().alphanum().min(8).max(50).required()
-          }
+          }).unknown(false)
         }
       },
       handler: function(request, reply) {
           var user = request.payload;
           if (user.password !== user.confirmPassword) {
-            // TODO: Throw more formal error 400
-            reply("Error: Password and Confirm Password must be the same.");
+            reply("Passwords must match").code(400);
           } else {
             Bcrypt.genSalt(10, function(err, salt) {
               Bcrypt.hash(user.password, salt, function(err, hash) {
