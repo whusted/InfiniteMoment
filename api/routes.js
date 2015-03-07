@@ -1,47 +1,45 @@
 // ROUTES FOR API
-// =============================================================================
+var routes = [
+    {
+      method: 'POST',
+      path: '/signup',
+      handler: function (request, reply) {
+          reply('New user bruh');
+      }
+    },
 
-var express = require('express');
-var router = express.Router();
-var DbSpecs = require('../config.js');
-var mongoose = require('mongoose');
-mongoose.connect(DbSpecs);
+    {
+      method: 'POST',
+      path: '/login',
+      handler: function (request, reply) {
+        reply('Login');
+      }
 
-// middleware to use for all requests
-router.use(function (req, res, next) {
-  console.log('Something is happening..');
-  next(); // make sure we go to the next routes and don't stop here
-});
+    },
+    {
+      method: 'GET',
+      path: '/user/:id',
+      handler: function (request, reply) {
+        reply('User', reply.params.id);
+      }
 
-router.get('/', function (req, res) {
-    res.json({ message: 'Mom get the camera' });   
-});
+    },
+    // post to new conversation
+    {
+      method: 'POST',
+      path: '/moments',
+      handler: function (request, reply) {
+        reply('New message in new convo');
+      }
 
-router.post('/signup', function (req, res) {
-  var payload = req.body;
-});
+    },
+    {
+      method: 'POST',
+      path: '/moments/:id',
+      handler: function (request, reply) {
+        reply('New message in existing convo');
+      }
 
-router.post('/login', function(req, res) {
-  var payload = req.body;
-});
-
-router.get('/user/:id', function(req, res) {
-  var payload = req.body;
-});
-
-// post to new conversation
-router.post('/moments', function(req, res) {
-  var payload = req.body;
-})
-
-  // get existing conversation
-  .get('/moments/:id', function(req, res) {
-    var payload = req.body;
-  })
-  
-  // post to existing conversation
-  .post('/moments/:id', function(req, res) {
-    var payload = req.body;
-  });
-
-module.exports = router;
+    }
+];
+module.exports = routes;
