@@ -20,7 +20,8 @@ var routes = [
       handler: function(request, reply) {
           var user = request.payload;
           if (user.password !== user.confirmPassword) {
-            reply("Password and Confirm Password must be the same.");
+            // TODO: Throw more formal error 400
+            reply("Error: Password and Confirm Password must be the same.");
           } else {
             Bcrypt.genSalt(10, function(err, salt) {
               Bcrypt.hash(user.password, salt, function(err, hash) {
