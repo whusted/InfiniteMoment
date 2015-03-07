@@ -66,7 +66,7 @@ var routes = [
             reply("Handle not found").code(404);
           } else {
             // TODO: log user in
-            // Check password; generate UUID (token for session)
+            // Check password brypt.compare(); generate UUID (token for session)
           }
         });
       }
