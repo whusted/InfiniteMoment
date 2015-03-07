@@ -1,8 +1,12 @@
 var Hapi = require('hapi'),
-    routes = require('./routes');
+    routes = require('./routes'),
+    mongoose   = require('mongoose'),
+    config = require('./config');
 
 var server = new Hapi.Server();
 server.connection({ port: 7777 });
+
+mongoose.connect(config);
 
 server.route(routes);
 server.start();
