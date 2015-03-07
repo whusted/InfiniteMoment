@@ -9,7 +9,7 @@ exports.login = {
         }
     },
     handler: function (request, reply) {
-        reply('Hi your e-mail is' + request.payload.email);
+        reply('Your e-mail is' + request.payload.email);
     }
 }
 
@@ -21,6 +21,6 @@ exports.register = {
         }
     },
     handler: function(request, reply) {
-        reply('Hi your e-mail is' + request.payload.email);
+        reply('Your e-mail is' + request.payload.email);
     }
 }

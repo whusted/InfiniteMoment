@@ -1,13 +1,8 @@
 var Hapi = require('hapi'),
-    routes = require('./routes'),
-    mongoose   = require('mongoose'),
-    Config = require('./config');
+    routes = require('./routes');
 
 var server = new Hapi.Server();
 server.connection({ port: 7777 });
-
-mongoose.connect('mongodb://' + Config.mongo.username + ':' + Config.mongo.password + '@' + Config.mongo.url + '/' + Config.mongo.database);  
-var db = mongoose.connection;
 
 server.route(routes);
 server.start();
