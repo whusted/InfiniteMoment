@@ -15,15 +15,23 @@ var routes = [
         }
       },
       handler: function(request, reply) {
-          reply('Your e-mail is' + request.payload.email);
+          reply('Your username is ' + request.payload.username);
       }
     },
 
     {
       method: 'POST',
       path: '/login',
+      config: {
+        validate: {
+          payload: {
+              username: Joi.string().min(3).max(20).required(),
+              password: Joi.string().alphanum().required()
+          }
+        }
+      },
       handler: function (request, reply) {
-        reply('Login');
+        reply('User ' + request.payload.username + ' has logged in.');
       }
 
     },
