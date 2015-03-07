@@ -54,13 +54,21 @@ var routes = [
       config: {
         validate: {
           payload: Joi.object({
-              username: Joi.string().min(3).max(20).required(),
+              handle: Joi.string().min(3).max(20).required(),
               password: Joi.string().alphanum().required()
           }).unknown(false)
         }
       },
       handler: function (request, reply) {
-        reply('User ' + request.payload.username + ' has logged in.');
+        var user = request.payload;
+        User.find({handle: user.handle}, function(err, found) {
+          if (!found.length) {
+            reply("Handle not found").code(404);
+          } else {
+            // TODO: log user in
+            // Check password; generate UUID (token for session)
+          }
+        });
       }
 
     },
