@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema,
+autoIncrement = require('mongoose-auto-increment');
 
 var userSchema = new Schema({
   id: String,
