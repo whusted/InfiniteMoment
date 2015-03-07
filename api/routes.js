@@ -25,7 +25,6 @@ var routes = [
           } else {
             Bcrypt.genSalt(10, function(err, salt) {
               Bcrypt.hash(user.password, salt, function(err, hash) {
-                // Store hash in your password DB.
                 var newUser = new User({
                   name: user.name,
                   handle: user.handle,
@@ -33,6 +32,7 @@ var routes = [
                 });
                 newUser.save();
                 reply({
+                  id: user._id,
                   name: user.name,
                   handle: user.handle,
                   response: "Created a new user"
