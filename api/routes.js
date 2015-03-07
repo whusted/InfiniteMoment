@@ -1,4 +1,3 @@
-// ROUTES FOR API
 var routes = [
     {
       method: 'POST',
