@@ -9,6 +9,6 @@
   "author": "Willy Husted",
   "license": "ISC",
   "dependencies": {
-    
+    "passport-local": "~1.0.0"
   }
 }

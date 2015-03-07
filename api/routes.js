@@ -1,9 +1,21 @@
+var Hapi = require('hapi'),
+    Joi = require('joi'),
+    User = require('./models/user').User;
+
 var routes = [
     {
       method: 'POST',
       path: '/signup',
-      handler: function (request, reply) {
-          reply('New user bruh');
+      config: {
+        validate: {
+          payload: {
+              username: Joi.string().min(3).max(20).required(),
+              password: Joi.string().alphanum().required()
+          }
+        }
+      },
+      handler: function(request, reply) {
+          reply('Your e-mail is' + request.payload.email);
       }
     },
 
