@@ -1,6 +1,7 @@
 var Hapi = require('hapi'),
     Joi = require('joi'),
-    User = require('./models/user').User;
+    User = require('./models/user').User,
+    Bcrypt = require('bcrypt');
 
 var routes = [
     {
@@ -9,13 +10,32 @@ var routes = [
       config: {
         validate: {
           payload: {
-              username: Joi.string().min(3).max(20).required(),
-              password: Joi.string().alphanum().required()
+              name: Joi.string().min(3).max(50).required(),
+              handle: Joi.string().min(3).max(20).required(),
+              password: Joi.string().alphanum().min(8).max(50).required()
           }
         }
       },
       handler: function(request, reply) {
-          reply('Your username is ' + request.payload.username);
+          var user = request.payload;
+          Bcrypt.genSalt(10, function(err, salt) {
+            Bcrypt.hash(user.password, salt, function(err, hash) {
+              // Store hash in your password DB.
+              var newUser = new User({
+                name: user.name,
+                handle: user.handle,
+                password: hash
+              });
+              newUser.save(function(err) {
+                console.log(err);
+              });
+              reply({
+                name: user.name,
+                handle: user.handle,
+                response: "Created a new user"
+              });
+            });
+          });
       }
     },
 
