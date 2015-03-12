@@ -1,7 +1,8 @@
 var Hapi = require('hapi'),
     Joi = require('joi'),
     User = require('./models/user').User,
-    Bcrypt = require('bcrypt');
+    Bcrypt = require('bcrypt'),
+    Uuid = require('uuid');
 
 var routes = [
     {
@@ -68,8 +69,8 @@ var routes = [
             var existingUser = userFound[0];
             Bcrypt.compare(user.password, existingUser.password, function(err, res) {
               if (res) {
-                // Create auth token
-                reply(existingUser);
+                var token = Uuid.v1();
+                reply(token);
               } else {
                 reply("Invalid password.").code(403);
               }
