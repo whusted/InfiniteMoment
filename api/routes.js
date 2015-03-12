@@ -67,8 +67,8 @@ var routes = [
             reply("Invalid username.").code(404);
           } else {
             var existingUser = userFound[0];
-            Bcrypt.compare(user.password, existingUser.password, function(err, res) {
-              if (res) {
+            Bcrypt.compare(user.password, existingUser.password, function(err, isValid) {
+              if (isValid) {
                 var token = Uuid.v1();
                 reply(token);
               } else {
