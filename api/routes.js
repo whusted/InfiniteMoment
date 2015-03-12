@@ -2,7 +2,7 @@ var Hapi = require('hapi'),
     Joi = require('joi'),
     User = require('./models/user').User,
     Bcrypt = require('bcrypt'),
-    Uuid = require('uuid');
+    Server = require('./index');
 
 var routes = [
     {
@@ -53,6 +53,7 @@ var routes = [
       method: 'POST',
       path: '/login',
       config: {
+        auth: 'simple',
         validate: {
           payload: Joi.object({
               handle: Joi.string().min(3).max(20).required(),
@@ -66,15 +67,9 @@ var routes = [
           if (!userFound.length) {
             reply("Invalid username.").code(404);
           } else {
+            // TODO: Basic auth for login
             var existingUser = userFound[0];
-            Bcrypt.compare(user.password, existingUser.password, function(err, isValid) {
-              if (isValid) {
-                var token = Uuid.v1();
-                reply(token);
-              } else {
-                reply("Invalid password.").code(403);
-              }
-            });
+            reply('hello, ' + request.auth.credentials.handle);
           }
         });
       }
