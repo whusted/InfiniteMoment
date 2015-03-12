@@ -61,12 +61,19 @@ var routes = [
       },
       handler: function (request, reply) {
         var user = request.payload;
-        User.find({handle: user.handle}, function(err, found) {
-          if (!found.length) {
-            reply("Handle not found").code(404);
+        User.find({handle: user.handle}, function(err, userFound) {
+          if (!userFound.length) {
+            reply("Invalid username.").code(404);
           } else {
-            // TODO: log user in
-            // Check password brypt.compare(); generate UUID (token for session)
+            var existingUser = userFound[0];
+            Bcrypt.compare(user.password, existingUser.password, function(err, res) {
+              if (res) {
+                // Create auth token
+                reply(existingUser);
+              } else {
+                reply("Invalid password.").code(403);
+              }
+            });
           }
         });
       }
