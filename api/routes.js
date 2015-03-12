@@ -2,7 +2,7 @@ var Hapi = require('hapi'),
     Joi = require('joi'),
     User = require('./models/user').User,
     Bcrypt = require('bcrypt'),
-    Server = require('./index');
+    Uuid = require('uuid');
 
 var routes = [
     {
@@ -12,7 +12,7 @@ var routes = [
         validate: {
           payload: Joi.object({
               name: Joi.string().min(3).max(50).required(),
-              handle: Joi.string().min(3).max(20).required(),
+              username: Joi.string().min(3).max(20).required(),
               password: Joi.string().alphanum().min(8).max(50).required(),
               confirmPassword: Joi.string().alphanum().min(8).max(50).required()
           }).unknown(false)
@@ -24,22 +24,22 @@ var routes = [
           reply("Passwords must match").code(400);
         }
 
-        User.find({handle: user.handle}, function(err, found) {
+        User.find({username: user.username}, function(err, found) {
           if (found.length) {
-            reply("Handle already exists").code(409);
+            reply("username already exists").code(409);
           } else {
             Bcrypt.genSalt(10, function(err, salt) {
               Bcrypt.hash(user.password, salt, function(err, hash) {
                 var newUser = new User({
                   name: user.name,
-                  handle: user.handle,
+                  username: user.username,
                   password: hash
                 });
                 newUser.save();
                 reply({
                   id: user._id,
                   name: user.name,
-                  handle: user.handle,
+                  username: user.username,
                   response: "Created a new user"
                 });
               });
@@ -53,23 +53,30 @@ var routes = [
       method: 'POST',
       path: '/login',
       config: {
-        auth: 'simple',
         validate: {
           payload: Joi.object({
-              handle: Joi.string().min(3).max(20).required(),
+              username: Joi.string().min(3).max(20).required(),
               password: Joi.string().alphanum().required()
           }).unknown(false)
         }
       },
       handler: function (request, reply) {
         var user = request.payload;
-        User.find({handle: user.handle}, function(err, userFound) {
+        User.find({username: user.username}, function(err, userFound) {
           if (!userFound.length) {
-            reply("Invalid username.").code(404);
+            reply("Invalid username.").code(401);
           } else {
-            // TODO: Basic auth for login
             var existingUser = userFound[0];
-            reply('hello, ' + request.auth.credentials.handle);
+            Bcrypt.compare(user.password, existingUser.password, function(err, isValid) {
+              if (isValid) {
+                // TODO: store token (to user obj?)
+                var token = Uuid.v1();
+                // Reply with token; "Note authorization token"
+                reply(token);
+              } else {
+                reply("Invalid password.").code(401);
+              }
+            });
           }
         });
       }
