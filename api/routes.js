@@ -24,9 +24,9 @@ var routes = [
           reply("Passwords must match").code(400);
         }
 
-        User.find({username: user.username}, function(err, found) {
+        User.findOne({username: user.username}, function(err, found) {
           if (found.length) {
-            reply("username already exists").code(409);
+            reply("Username " + user.username + " already exists").code(409);
           } else {
             Bcrypt.genSalt(10, function(err, salt) {
               Bcrypt.hash(user.password, salt, function(err, hash) {
@@ -62,7 +62,7 @@ var routes = [
       },
       handler: function (request, reply) {
         var user = request.payload;
-        User.find({username: user.username}, function(err, userFound) {
+        User.findOne({username: user.username}, function(err, userFound) {
           if (!userFound.length) {
             reply("Invalid username.").code(401);
           } else {
@@ -72,7 +72,7 @@ var routes = [
                 // TODO: store token (to user obj?)
                 var token = Uuid.v1();
                 // Reply with token; "Note authorization token"
-                reply(token);
+                reply("Account authorized; note token: " + token);
               } else {
                 reply("Invalid password.").code(401);
               }
