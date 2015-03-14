@@ -14,6 +14,6 @@ var messageSchema = new Schema({
 });
 
 messageSchema.plugin(autoIncrement.plugin, 'Message');
-var Message = mongoose.model('Message', messageSchema, 'Messages');
+var Message = mongoose.model('Message', messageSchema, 'PendingMessages');
 
 exports.Message = Message;
