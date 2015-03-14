@@ -70,7 +70,7 @@ var routes = [
             if (isValid) {
                 if (!existingUser.authToken) {
                   var token = Uuid.v1();
-                  // HASH token before saving to db
+                  // TODO: hash token before saving to db
                   existingUser.authToken = token;
                   existingUser.save(function(err) {
                     if (err) {
@@ -132,8 +132,24 @@ var routes = [
   {
     method: 'POST',
     path: '/moments',
+    config: {
+      validate: {
+        payload: Joi.object({
+            Authorization: Joi.string().required(),
+            content: Joi.string().min(1).max(300).required(),
+            recipients: Joi.array().items(Joi.string().min(1).required()),
+            deliveryDate: Joi.date().iso().required()
+        }).unknown(false)
+      }
+    },
     handler: function (request, reply) {
-      reply('New message in new convo');
+      var moment = request.payload;
+      User.findOne({authToken: userToken}, function(err, existingUser) {
+        if (!existingUser) {
+          reply("Auth token has expired.").code(401);
+          reply('New message in new convo');
+        }
+      });
     }
 
   },
