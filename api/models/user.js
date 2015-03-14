@@ -18,4 +18,4 @@ var userSchema = new Schema({
 userSchema.plugin(autoIncrement.plugin, 'User');
 var User = mongoose.model('User', userSchema, 'Users');
 
-exports.User = User;  
+exports.User = User;
