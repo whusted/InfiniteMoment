@@ -169,12 +169,20 @@ var routes = [
 
   },
   {
-    method: 'POST',
-    path: '/moments/:id',
+    method: 'GET',
+    path: '/moments/{userToken}',
     handler: function (request, reply) {
-      reply('New message in existing convo');
+      User.findOne({ authToken: request.params.userToken }, function(err, existingUser) {
+        if (!existingUser) {
+          reply("Auth token has expired.").code(401);
+        } else {
+          var username = existingUser.username;
+          Moment.find({ author: username }, function(err, moments) {
+            reply(moments);
+          });
+        }
+      });
     }
-
   }
 ];
 module.exports = routes;
