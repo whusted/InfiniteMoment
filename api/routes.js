@@ -1,6 +1,7 @@
 var Hapi = require('hapi'),
     Joi = require('joi'),
     User = require('./models/user').User,
+    Moment = require('./models/moment').Moment,
     Bcrypt = require('bcrypt'),
     Uuid = require('uuid');
 
@@ -144,10 +145,24 @@ var routes = [
     },
     handler: function (request, reply) {
       var moment = request.payload;
-      User.findOne({authToken: userToken}, function(err, existingUser) {
+      User.findOne({ authToken: moment.Authorization }, function(err, existingUser) {
         if (!existingUser) {
           reply("Auth token has expired.").code(401);
-          reply('New message in new convo');
+        } else {
+          var username = existingUser.username;
+          var newMoment = new Moment({
+            content: moment.content,
+            author: username,
+            recipients: moment.recipients,
+            deliveryDate: moment.deliveryDate
+          });
+          newMoment.save();
+          reply({
+            id: moment._id,
+            author: username,
+            recipients: moment.recipients,
+            response: "Created a new moment"
+          });
         }
       });
     }
