@@ -170,9 +170,9 @@ var routes = [
   },
   {
     method: 'GET',
-    path: '/moments/{userToken}',
+    path: '/moments',
     handler: function (request, reply) {
-      User.findOne({ authToken: request.params.userToken }, function(err, existingUser) {
+      User.findOne({ authToken: request.headers.authorization }, function(err, existingUser) {
         if (!existingUser) {
           reply("Auth token has expired.").code(401);
         } else {
