@@ -11,7 +11,9 @@ var userSchema = new Schema({
   blocked: {type: [String], required: false },
   email: {type: String, required: false },
   password: {type: String, required: true },
+  friends: {type: [String], required: false },
   authToken: {type: String, required: false },
+  tokenExpiration: { type: Date, required: false },
   creationDate: { type: Date, required: true, default: Date.now }
 });
 
