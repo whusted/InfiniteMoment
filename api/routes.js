@@ -34,35 +34,7 @@ var routes = [
         }).unknown(false)
       }
     },
-    handler: function (request, reply) {
-      var user = request.payload;
-      User.findOne({username: user.username}, function(err, existingUser) {
-        if (!existingUser) {
-          reply("Invalid username.").code(401);
-        } else {
-          Bcrypt.compare(user.password, existingUser.password, function(err, isValid) {
-            if (isValid) {
-                if (!existingUser.authToken) {
-                  var token = Uuid.v1();
-                  // TODO: hash token before saving to db
-                  existingUser.authToken = token;
-                  existingUser.save(function(err) {
-                    if (err) {
-                      reply(err);
-                    } else {
-                      reply("Account authorized; note token: " + token);
-                    }
-                  });
-                } else {
-                  reply("User is already logged in").code(403);
-                }
-            } else {
-              reply("Invalid password.").code(401);
-            }
-          });
-        }
-      });
-    }
+    handler: accounts.login
   },
 
   {
