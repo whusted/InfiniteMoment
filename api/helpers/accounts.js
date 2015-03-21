@@ -61,6 +61,24 @@ var accountFuncs = {
           });
         }
       });
+    },
+
+    logout: function (request, reply) {
+      var userToken = request.payload.Authorization;
+      User.findOne({authToken: userToken}, function(err, existingUser) {
+        if (!existingUser) {
+          reply("Invalid username.").code(401);
+        } else {
+          existingUser.authToken = null;
+          existingUser.save(function(err) {
+            if (err) {
+              reply(err);
+            } else {
+              reply("User's session has ended.");
+            }
+          });
+        }
+      });
     }
 };
 
