@@ -78,18 +78,7 @@ var routes = [
   {
     method: 'GET',
     path: '/moments',
-    handler: function (request, reply) {
-      User.findOne({ authToken: request.headers.authorization }, function(err, existingUser) {
-        if (!existingUser) {
-          reply("Auth token has expired.").code(401);
-        } else {
-          var username = existingUser.username;
-          Moment.find({ author: username }, function(err, moments) {
-            reply(moments);
-          });
-        }
-      });
-    }
+    handler: moments.getMomentsCreatedByUser
   },
 
   {
