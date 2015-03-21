@@ -4,7 +4,8 @@ var Hapi = require('hapi'),
     Moment = require('./models/moment').Moment,
     Bcrypt = require('bcrypt'),
     Uuid = require('uuid'),
-    accounts = require('./helpers/accounts');
+    accounts = require('./helpers/accounts'),
+    moments = require('./helpers/moments');
 
 var routes = [
   {
@@ -58,7 +59,7 @@ var routes = [
     }
 
   },
-  // post to new conversation
+
   {
     method: 'POST',
     path: '/moments',
@@ -72,30 +73,7 @@ var routes = [
         }).unknown(false)
       }
     },
-    handler: function (request, reply) {
-      var moment = request.payload;
-      User.findOne({ authToken: moment.Authorization }, function(err, existingUser) {
-        if (!existingUser) {
-          reply("Auth token has expired.").code(401);
-        } else {
-          var username = existingUser.username;
-          var newMoment = new Moment({
-            content: moment.content,
-            author: username,
-            recipients: moment.recipients,
-            deliveryDate: moment.deliveryDate
-          });
-          newMoment.save();
-          reply({
-            id: moment._id,
-            author: username,
-            recipients: moment.recipients,
-            response: "Created a new moment"
-          });
-        }
-      });
-    }
-
+    handler: moments.createMoment
   },
   {
     method: 'GET',
