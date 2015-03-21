@@ -37,6 +37,19 @@ var momentFuncs = {
           });
         }
       });
+    },
+
+    getMomentsFeed: function (request, reply) {
+      User.findOne({ authToken: request.headers.authorization }, function(err, existingUser) {
+        if (!existingUser) {
+          reply("Auth token has expired.").code(401);
+        } else {
+          var username = existingUser.username;
+          Moment.find({ recipients: username }, function(err, moments) {
+            reply(moments);
+          });
+        }
+      });
     }
 
 };

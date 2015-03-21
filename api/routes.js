@@ -83,19 +83,8 @@ var routes = [
 
   {
     method: 'GET',
-    path: '/momentsFeed/{userToken}',
-    handler: function (request, reply) {
-      User.findOne({ authToken: request.params.userToken }, function(err, existingUser) {
-        if (!existingUser) {
-          reply("Auth token has expired.").code(401);
-        } else {
-          var username = existingUser.username;
-          Moment.find({ recipients: username }, function(err, moments) {
-            reply(moments);
-          });
-        }
-      });
-    }
+    path: '/momentsFeed',
+    handler: moments.getMomentsFeed
   }
   // TODO: search users
   // TODO: add user to friend list
