@@ -41,13 +41,6 @@ var routes = [
   {
     method: 'DELETE',
     path: '/sessions',
-    config: {
-      validate: {
-        payload: Joi.object({
-            Authorization: Joi.string().required() // What else do I know about format of token?
-        }).unknown(false)
-      }
-    },
     handler: accounts.logout
   },
 

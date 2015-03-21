@@ -4,7 +4,7 @@ var User = require('../models/user').User,
 var momentFuncs = {
   createMoment: function (request, reply) {
     var moment = request.payload;
-    User.findOne({ authToken: moment.Authorization }, function(err, existingUser) {
+    User.findOne({authToken: moment.Authorization}, function(err, existingUser) {
       if (!existingUser) {
         reply("Auth token has expired.").code(401);
       } else {
@@ -27,7 +27,7 @@ var momentFuncs = {
   },
 
   getMomentsCreatedByUser: function (request, reply) {
-      User.findOne({ authToken: request.headers.authorization }, function(err, existingUser) {
+      User.findOne({authToken: request.headers.authorization}, function(err, existingUser) {
         if (!existingUser) {
           reply("Auth token has expired.").code(401);
         } else {
@@ -40,7 +40,7 @@ var momentFuncs = {
     },
 
     getMomentsFeed: function (request, reply) {
-      User.findOne({ authToken: request.headers.authorization }, function(err, existingUser) {
+      User.findOne({authToken: request.headers.authorization}, function(err, existingUser) {
         if (!existingUser) {
           reply("Auth token has expired.").code(401);
         } else {

@@ -64,8 +64,7 @@ var accountFuncs = {
     },
 
     logout: function (request, reply) {
-      var userToken = request.payload.Authorization;
-      User.findOne({authToken: userToken}, function(err, existingUser) {
+      User.findOne({authToken: request.headers.authorization}, function(err, existingUser) {
         if (!existingUser) {
           reply("Invalid username.").code(401);
         } else {
