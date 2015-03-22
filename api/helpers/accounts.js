@@ -71,11 +71,10 @@ var accountFuncs = {
         if (!existingUser) {
           reply("User already logged out.").code(401);
         } else {
-          existingUser.authToken = null;
-          existingUser.tokenExpiration = null;
-          existingUser.save(function(err) {
+          setTokenToNull(existingUser);
+          existingUser.save(function (err) {
             if (err) {
-              reply(err);
+              reply(err)
             } else {
               reply("User's session has ended.");
             }

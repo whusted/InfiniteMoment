@@ -9,6 +9,11 @@ var tokenFuncs = {
     var currentTime = new Date().getTime();
     var difference = currentTime - new Date(tokenExpiration).getTime();
     return difference > 0;
+  },
+
+  setTokenToNull: function (user) {
+    user.authToken = null;
+    user.tokenExpiration = null;
   }
 
 };
