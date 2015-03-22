@@ -1,6 +1,7 @@
 var User = require('../models/user').User,
     Bcrypt = require('bcrypt'),
-    Uuid = require('uuid');
+    Uuid = require('uuid'),
+    tokens = require('./tokens');
 
 var accountFuncs = {
     signup: function(request, reply) {
@@ -45,6 +46,7 @@ var accountFuncs = {
                   var token = Uuid.v1();
                   // TODO: hash token before saving to db
                   existingUser.authToken = token;
+                  existingUser.tokenExpiration = tokens.setExpiration();
                   existingUser.save(function(err) {
                     if (err) {
                       reply(err);
@@ -64,11 +66,13 @@ var accountFuncs = {
     },
 
     logout: function (request, reply) {
-      User.findOne({authToken: request.headers.authorization}, function(err, existingUser) {
+      var token = request.headers.authorization;
+      User.findOne({authToken: token}, function(err, existingUser) {
         if (!existingUser) {
-          reply("Invalid username.").code(401);
+          reply("User already logged out.").code(401);
         } else {
           existingUser.authToken = null;
+          existingUser.tokenExpiration = null;
           existingUser.save(function(err) {
             if (err) {
               reply(err);
