@@ -1,18 +1,13 @@
 var User = require('../models/user').User,
     Moment = require('../models/moment').Moment,
-    tokens = require('./tokens');
+    tokens = require('./tokens'),
+    auth = require('./authentication');
 
 var momentFuncs = {
   createMoment: function (request, reply) {
     var moment = request.payload;
     User.findOne({authToken: moment.Authorization}, function (err, existingUser) {
-      if (!existingUser) {
-        reply("Invalid auth token.").code(401);
-      } else if (tokens.isExpired(existingUser.tokenExpiration)) {
-        tokens.setTokenToNull(existingUser);
-        existingUser.save();
-        reply("Auth token has expired.").code(401);
-      } else {
+      if (auth.checkAuthToken(existingUser, reply)) {
         var username = existingUser.username;
         var newMoment = new Moment({
           content: moment.content,
@@ -33,13 +28,7 @@ var momentFuncs = {
 
   getMomentsCreatedByUser: function (request, reply) {
       User.findOne({authToken: request.headers.authorization}, function (err, existingUser) {
-        if (!existingUser) {
-          reply("Invalid auth token.").code(401);
-        } else if (tokens.isExpired(existingUser.tokenExpiration)) {
-          tokens.setTokenToNull(existingUser);
-          existingUser.save();
-          reply("Auth token has expired.").code(401);
-        } else {
+        if (auth.checkAuthToken(existingUser, reply)) {
           var username = existingUser.username;
           Moment.find({ author: username }, function (err, moments) {
             reply(moments);
@@ -50,13 +39,7 @@ var momentFuncs = {
 
     getMomentsFeed: function (request, reply) {
       User.findOne({authToken: request.headers.authorization}, function (err, existingUser) {
-        if (!existingUser) {
-          reply("Invalid auth token.").code(401);
-        } else if (tokens.isExpired(existingUser.tokenExpiration)) {
-          tokens.setTokenToNull(existingUser);
-          existingUser.save();
-          reply("Auth token has expired.").code(401);
-        } else {
+        if (auth.checkAuthToken(existingUser, reply)) {
           var username = existingUser.username;
           Moment.find({ recipients: username }, function (err, moments) {
             reply(moments);

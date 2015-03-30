@@ -85,8 +85,14 @@ var routes = [
     method: 'GET',
     path: '/users',
     handler: users.searchForUsers
+  },
+
+  {
+    method: 'POST',
+    path: '/addFriend',
+    handler: users.addFriend
   }
-  // TODO: search users
+  
   // TODO: add user to friend list
   // TODO: get user's friend list
   // TODO: delete user account

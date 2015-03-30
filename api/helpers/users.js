@@ -1,16 +1,11 @@
 var User = require('../models/user').User,
-    tokens = require('./tokens');
+    tokens = require('./tokens'),
+    auth = require('./authentication');
 
 var userFuncs = {
   searchForUsers: function (request, reply) {
     User.findOne({authToken: request.headers.authorization}, function (err, existingUser) {
-      if (!existingUser) {
-        reply("Invalid auth token.").code(401);
-      } else if (tokens.isExpired(existingUser.tokenExpiration)) {
-        tokens.setTokenToNull(existingUser);
-        existingUser.save();
-        reply("Auth token has expired.").code(401);
-      } else {
+      if (auth.checkAuthToken(existingUser, reply)) {
         var searchString = request.headers.search;
         User.find({username: new RegExp('^' + searchString + '.*$', "i")}, function (err, users) {
           if (!users.length) {
@@ -26,7 +21,11 @@ var userFuncs = {
           }
         });
       }
-    })
+    });
+  },
+
+  addFriend: function (request, reply) {
+
   }
 
 };
