@@ -11,14 +11,18 @@ var userFuncs = {
         existingUser.save();
         reply("Auth token has expired.").code(401);
       } else {
-        // grab string from header
         var searchString = request.headers.search;
-        // put string into regex
-        User.find({username: new RegExp('(?i)'+ searchString + '.*')}, function (err, users) {
+        User.find({username: new RegExp('^' + searchString + '.*$', "i")}, function (err, users) {
           if (!users.length) {
-            // No users found
+            reply("No users found.");
           } else {
-            reply(users);
+            var usersArr = [];
+            var index = 0;
+            users.forEach(function (user) {
+              usersArr[index] = user.username;
+              index++;
+            });
+            reply(usersArr);
           }
         });
       }
