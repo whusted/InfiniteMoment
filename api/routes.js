@@ -5,7 +5,8 @@ var Hapi = require('hapi'),
     Bcrypt = require('bcrypt'),
     Uuid = require('uuid'),
     accounts = require('./helpers/accounts'),
-    moments = require('./helpers/moments');
+    moments = require('./helpers/moments'),
+    users = require('./helpers/users');
 
 var routes = [
   {
@@ -78,6 +79,12 @@ var routes = [
     method: 'GET',
     path: '/momentsFeed',
     handler: moments.getMomentsFeed
+  },
+
+  {
+    method: 'GET',
+    path: '/users',
+    handler: users.searchForUsers
   }
   // TODO: search users
   // TODO: add user to friend list

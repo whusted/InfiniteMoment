@@ -10,12 +10,12 @@ var accountFuncs = {
         reply("Passwords must match").code(400);
       }
 
-      User.findOne({username: user.username}, function(err, found) {
+      User.findOne({username: user.username}, function (err, found) {
         if (found) {
           reply("Username " + user.username + " already exists").code(409);
         } else {
           Bcrypt.genSalt(10, function(err, salt) {
-            Bcrypt.hash(user.password, salt, function(err, hash) {
+            Bcrypt.hash(user.password, salt, function (err, hash) {
               var newUser = new User({
                 name: user.name,
                 username: user.username,
@@ -36,11 +36,11 @@ var accountFuncs = {
 
     login: function (request, reply) {
       var user = request.payload;
-      User.findOne({username: user.username}, function(err, existingUser) {
+      User.findOne({username: user.username}, function (err, existingUser) {
         if (!existingUser) {
           reply("Invalid username.").code(401);
         } else {
-          Bcrypt.compare(user.password, existingUser.password, function(err, isValid) {
+          Bcrypt.compare(user.password, existingUser.password, function (err, isValid) {
             if (isValid) {
                 if (!existingUser.authToken) {
                   var token = Uuid.v1();
@@ -67,7 +67,7 @@ var accountFuncs = {
 
     logout: function (request, reply) {
       var token = request.headers.authorization;
-      User.findOne({authToken: token}, function(err, existingUser) {
+      User.findOne({authToken: token}, function (err, existingUser) {
         if (!existingUser) {
           reply("User already logged out.").code(401);
         } else {
