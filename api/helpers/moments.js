@@ -31,7 +31,7 @@ var momentFuncs = {
         if (auth.checkAuthToken(existingUser, reply)) {
           var username = existingUser.username;
           Moment.find({ author: username }, function (err, moments) {
-            var sortedMomentsArray = moments.sort(function (a, b) {
+            var sortedMoments = moments.sort(function (a, b) {
               var dateA = a.deliveryDate.getTime(),
                   dateB = b.deliveryDate.getTime();
               if (dateA < dateB) {
@@ -42,7 +42,7 @@ var momentFuncs = {
               }
               return 0;
             });
-            reply(sortedMomentsArray);
+            reply(sortedMoments);
           });
         }
       });
@@ -63,7 +63,18 @@ var momentFuncs = {
                 index++;
               }
             });
-            reply(viewableMoments);
+            var sortedMoments = viewableMoments.sort(function (a, b) {
+              var dateA = a.deliveryDate.getTime(),
+                  dateB = b.deliveryDate.getTime();
+              if (dateA > dateB) {
+                return -1;
+              }
+              if (dateA < dateB) {
+                return 1;
+              }
+              return 0;
+            });
+            reply(sortedMoments);
           });
         }
       });
