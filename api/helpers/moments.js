@@ -38,11 +38,21 @@ var momentFuncs = {
     },
 
     getMomentsFeed: function (request, reply) {
-      User.findOne({authToken: request.headers.authorization}, function (err, existingUser) {
-        if (auth.checkAuthToken(existingUser, reply)) {
-          var username = existingUser.username;
+      User.findOne({authToken: request.headers.authorization}, function (err, user) {
+        if (auth.checkAuthToken(user, reply)) {
+          var username = user.username;
           Moment.find({ recipients: username }, function (err, moments) {
-            reply(moments);
+            var viewableMoments = [];
+            var index = 0;
+            moments.forEach(function (moment) {
+              var currentTime = new Date().getTime();
+              var deliveryDateInMillis = new Date(moment.deliveryDate).getTime();
+              if (currentTime >= deliveryDateInMillis) {
+                viewableMoments[index] = moment;
+                index++;
+              }
+            });
+            reply(viewableMoments);
           });
         }
       });

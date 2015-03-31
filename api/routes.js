@@ -107,8 +107,6 @@ var routes = [
     handler: users.getFriends
   }
 
-  // TODO: add user to friend list
-  // TODO: get user's friend list
   // TODO: delete user account
 ];
 module.exports = routes;

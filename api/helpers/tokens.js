@@ -7,8 +7,7 @@ var tokenFuncs = {
 
   isExpired: function (tokenExpiration) {
     var currentTime = new Date().getTime();
-    var difference = currentTime - new Date(tokenExpiration).getTime();
-    return difference > 0;
+    return currentTime > new Date(tokenExpiration).getTime();
   },
 
   setTokenToNull: function (user) {
