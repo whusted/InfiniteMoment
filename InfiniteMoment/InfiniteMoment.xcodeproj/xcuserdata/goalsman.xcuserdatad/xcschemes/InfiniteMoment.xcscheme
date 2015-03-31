@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0610"
+   LastUpgradeVersion = "0620"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13670CD51A78213F009EC3A1"
+               BlueprintIdentifier = "130DE6641ACB0C32003676EC"
                BuildableName = "InfiniteMoment.app"
                BlueprintName = "InfiniteMoment"
                ReferencedContainer = "container:InfiniteMoment.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13670CF11A782140009EC3A1"
+               BlueprintIdentifier = "130DE67D1ACB0C32003676EC"
                BuildableName = "InfiniteMomentTests.xctest"
                BlueprintName = "InfiniteMomentTests"
                ReferencedContainer = "container:InfiniteMoment.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13670CF11A782140009EC3A1"
+               BlueprintIdentifier = "130DE67D1ACB0C32003676EC"
                BuildableName = "InfiniteMomentTests.xctest"
                BlueprintName = "InfiniteMomentTests"
                ReferencedContainer = "container:InfiniteMoment.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13670CD51A78213F009EC3A1"
+            BlueprintIdentifier = "130DE6641ACB0C32003676EC"
             BuildableName = "InfiniteMoment.app"
             BlueprintName = "InfiniteMoment"
             ReferencedContainer = "container:InfiniteMoment.xcodeproj">
@@ -72,10 +72,11 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13670CD51A78213F009EC3A1"
+            BlueprintIdentifier = "130DE6641ACB0C32003676EC"
             BuildableName = "InfiniteMoment.app"
             BlueprintName = "InfiniteMoment"
             ReferencedContainer = "container:InfiniteMoment.xcodeproj">
@@ -90,10 +91,11 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13670CD51A78213F009EC3A1"
+            BlueprintIdentifier = "130DE6641ACB0C32003676EC"
             BuildableName = "InfiniteMoment.app"
             BlueprintName = "InfiniteMoment"
             ReferencedContainer = "container:InfiniteMoment.xcodeproj">

@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>72CBA0B2-6DF0-4ED2-BCD2-4642BC798C72</string>
+	<string>8CFDA2E8-7942-48E9-9065-CAFB544856CD</string>
 	<key>IDESourceControlProjectName</key>
 	<string>InfiniteMoment</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://github.com/whusted/InfiniteMoment</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>InfiniteMoment.xcodeproj</string>
+	<string>InfiniteMoment/InfiniteMoment.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7E13730B4A2FD8558BD88980C85A5EC560DCEE42</key>
-		<string>../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/whusted/InfiniteMoment</string>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>7E13730B4A2FD8558BD88980C85A5EC560DCEE42</string>
 			<key>IDESourceControlWCCName</key>
-			<string>InfiniteMoment</string>
+			<string>IM</string>
 		</dict>
 	</array>
 </dict>
