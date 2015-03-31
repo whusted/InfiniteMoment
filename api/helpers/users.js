@@ -61,7 +61,18 @@ var userFuncs = {
   getFriends: function (request, reply) {
     User.findOne({authToken: request.headers.authorization}, function (err, user) {
       if (auth.checkAuthToken(user, reply)) {
-        reply(user.friends);
+        var sortedFriendsArray = user.friends.sort(function (a, b) {
+          var nameA = a.toLowerCase(),
+              nameB = b.toLowerCase();
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        });
+        reply(sortedFriendsArray);
       }
     });
   }

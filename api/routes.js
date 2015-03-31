@@ -1,9 +1,5 @@
-var Hapi = require('hapi'),
-    Joi = require('joi'),
+var Joi = require('joi'),
     User = require('./models/user').User,
-    Moment = require('./models/moment').Moment,
-    Bcrypt = require('bcrypt'),
-    Uuid = require('uuid'),
     accounts = require('./helpers/accounts'),
     moments = require('./helpers/moments'),
     users = require('./helpers/users');
@@ -69,6 +65,7 @@ var routes = [
     },
     handler: moments.createMoment
   },
+
   {
     method: 'GET',
     path: '/moments',
@@ -107,6 +104,5 @@ var routes = [
     handler: users.getFriends
   }
 
-  // TODO: delete user account
 ];
 module.exports = routes;

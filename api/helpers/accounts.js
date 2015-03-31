@@ -44,7 +44,7 @@ var accountFuncs = {
             if (isValid) {
                 if (!existingUser.authToken) {
                   var token = Uuid.v1();
-                  // TODO: hash token before saving to db
+                  // TODO: hash first
                   existingUser.authToken = token;
                   existingUser.tokenExpiration = tokens.setExpiration();
                   existingUser.save(function(err) {
