@@ -89,10 +89,24 @@ var routes = [
 
   {
     method: 'POST',
-    path: '/addFriend',
+    path: '/friends',
+    config: {
+      validate: {
+        payload: Joi.object({
+            Authorization: Joi.string().required(),
+            newFriend: Joi.string().required()
+        }).unknown(false)
+      }
+    },
     handler: users.addFriend
+  },
+
+  {
+    method: 'GET',
+    path: '/friends',
+    handler: users.getFriends
   }
-  
+
   // TODO: add user to friend list
   // TODO: get user's friend list
   // TODO: delete user account
