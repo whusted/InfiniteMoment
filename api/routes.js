@@ -11,10 +11,10 @@ var routes = [
     config: {
       validate: {
         payload: Joi.object({
-            name: Joi.string().min(3).max(50).required(),
             username: Joi.string().min(3).max(20).required(),
             password: Joi.string().alphanum().min(8).max(50).required(),
-            confirmPassword: Joi.string().alphanum().min(8).max(50).required()
+            confirmPassword: Joi.string().alphanum().min(8).max(50).required(),
+            phone: Joi.number().min(1000000).max(999999999999999).required() // So janky omg
         }).unknown(false)
       }
     },

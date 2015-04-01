@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SignUpViewController: UIViewController {
     
@@ -30,6 +31,18 @@ class SignUpViewController: UIViewController {
         println("password: " + password.text)
         println("confirmpassword: " + confirmPassword.text)
         println("phone: " + phoneNumber.text)
+        
+        let parameters = [
+            "username": username.text,
+            "password": password.text,
+            "confirmPassword": confirmPassword.text,
+            "phone": phoneNumber.text
+        ]
+        
+        Alamofire.request(.POST, "http://httpbin.org/post", parameters: parameters, encoding: .JSON)
+            .responseJSON {(request, response, JSON, error) in
+                println(JSON)
+            }
         
     }
     @IBAction func dismiss(sender: AnyObject) {

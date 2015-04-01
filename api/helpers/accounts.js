@@ -17,14 +17,13 @@ var accountFuncs = {
           Bcrypt.genSalt(10, function(err, salt) {
             Bcrypt.hash(user.password, salt, function (err, hash) {
               var newUser = new User({
-                name: user.name,
                 username: user.username,
-                password: hash
+                password: hash,
+                phone: user.phone
               });
               newUser.save();
               reply({
                 id: user._id,
-                name: user.name,
                 username: user.username,
                 response: "Created a new user"
               });
