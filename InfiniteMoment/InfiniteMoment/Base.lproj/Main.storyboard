@@ -121,9 +121,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Bip-lB-P6u" kind="popoverPresentation" popoverAnchorView="lpA-Nj-yd8" id="a0l-xD-DJA">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="Bip-lB-P6u" kind="presentation" id="7Uf-Ae-MlN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -201,23 +199,6 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AHY-Tc-psp">
-                                <rect key="frame" x="200" y="245" width="200" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Z0R-3x-f8B"/>
-                                    <constraint firstAttribute="width" constant="200" id="esG-5E-pLd"/>
-                                    <constraint firstAttribute="height" constant="30" id="pf7-Ee-NqN"/>
-                                    <constraint firstAttribute="height" constant="30" id="s2y-HS-YWk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Z0R-3x-f8B"/>
-                                        <exclude reference="pf7-Ee-NqN"/>
-                                    </mask>
-                                </variation>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ftv-qH-wLe">
                                 <rect key="frame" x="200" y="307" width="200" height="30"/>
                                 <constraints>
@@ -257,17 +238,17 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baG-mE-nUm">
-                                <rect key="frame" x="389" y="80" width="38" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baG-mE-nUm">
+                                <rect key="frame" x="393" y="80" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="38" id="aym-vh-pjO"/>
                                     <constraint firstAttribute="height" constant="30" id="dIs-Hw-E6w"/>
                                 </constraints>
-                                <state key="normal" title="Login">
+                                <state key="normal" title="X">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vPa-kx-pMF" kind="custom" id="jBo-5a-sM2"/>
+                                    <action selector="dismiss:" destination="Bip-lB-P6u" eventType="touchUpInside" id="frG-If-QZ0"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D5i-u1-OCQ">
@@ -284,6 +265,23 @@
                                     <mask key="constraints">
                                         <exclude reference="19P-nB-Cfy"/>
                                         <exclude reference="fWl-ze-iC4"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AHY-Tc-psp">
+                                <rect key="frame" x="200" y="245" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Z0R-3x-f8B"/>
+                                    <constraint firstAttribute="width" constant="200" id="esG-5E-pLd"/>
+                                    <constraint firstAttribute="height" constant="30" id="pf7-Ee-NqN"/>
+                                    <constraint firstAttribute="height" constant="30" id="s2y-HS-YWk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Z0R-3x-f8B"/>
+                                        <exclude reference="pf7-Ee-NqN"/>
                                     </mask>
                                 </variation>
                             </textField>
