@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class SignUpViewController: UIViewController {
     
@@ -36,8 +37,16 @@ class SignUpViewController: UIViewController {
         ]
         
         Alamofire.request(.POST, "http://localhost:7777/signup", parameters: parameters, encoding: .JSON)
-            .responseJSON {(request, response, JSON, error) in
-                println(JSON)
+            .responseJSON {(request, response, json, error) in
+                var resp = JSON(json!)
+                if (error != nil) {
+                    NSLog("Error: \(error)")
+                } else if (resp["error"] != nil) {
+                    var alert = UIAlertController(title: "Oops!", message: resp["message"].string, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                println(resp["error"])
             }
         
     }
