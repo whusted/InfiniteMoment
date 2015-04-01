@@ -13,6 +13,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
     @IBAction func login(sender: AnyObject) {
         let username = usernameField.text
@@ -20,13 +24,5 @@ class LoginViewController: UIViewController {
         
         println("username: " + username)
         println("password: " + password)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }

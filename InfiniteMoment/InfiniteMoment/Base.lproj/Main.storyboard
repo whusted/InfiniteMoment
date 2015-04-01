@@ -101,16 +101,6 @@
                                     <action selector="login:" destination="vPa-kx-pMF" eventType="touchUpInside" id="U1f-qO-G1B"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hd6-AU-Lpd">
-                                <rect key="frame" x="225" y="80" width="150" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="F0L-SB-R5b"/>
-                                    <constraint firstAttribute="width" constant="150" id="bej-In-Nc7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpA-Nj-yd8">
                                 <rect key="frame" x="386" y="536" width="71" height="30"/>
                                 <constraints>
@@ -124,6 +114,16 @@
                                     <segue destination="Bip-lB-P6u" kind="presentation" id="7Uf-Ae-MlN"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hd6-AU-Lpd">
+                                <rect key="frame" x="225" y="80" width="150" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="F0L-SB-R5b"/>
+                                    <constraint firstAttribute="width" constant="150" id="bej-In-Nc7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.97826086960000003" green="0.60696061050000005" blue="0.3397417217" alpha="0.92000000000000004" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -237,6 +237,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="signup:" destination="Bip-lB-P6u" eventType="touchUpInside" id="1SY-Xt-Z1u"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baG-mE-nUm">
                                 <rect key="frame" x="393" y="80" width="30" height="30"/>
@@ -326,6 +329,12 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="confirmPassword" destination="D5i-u1-OCQ" id="P7E-8X-mgc"/>
+                        <outlet property="password" destination="AHY-Tc-psp" id="wBn-tv-xLF"/>
+                        <outlet property="phoneNumber" destination="ftv-qH-wLe" id="D3h-3B-i5V"/>
+                        <outlet property="username" destination="yOZ-Pm-VaZ" id="f9N-r5-Puj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYc-Ot-jZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

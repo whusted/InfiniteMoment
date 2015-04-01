@@ -16,11 +16,22 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    @IBOutlet weak var username: UITextField!
+    
+    @IBOutlet weak var password: UITextField!
+    
+    @IBOutlet weak var confirmPassword: UITextField!
+    
+    @IBOutlet weak var phoneNumber: UITextField!
+    
+    
+    @IBAction func signup(sender: AnyObject) {
+        println("username: " + username.text)
+        println("password: " + password.text)
+        println("confirmpassword: " + confirmPassword.text)
+        println("phone: " + phoneNumber.text)
+        
     }
-    
-    
     @IBAction func dismiss(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
         
