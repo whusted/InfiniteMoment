@@ -27,10 +27,6 @@ class SignUpViewController: UIViewController {
     
     
     @IBAction func signup(sender: AnyObject) {
-        println("username: " + username.text)
-        println("password: " + password.text)
-        println("confirmpassword: " + confirmPassword.text)
-        println("phone: " + phoneNumber.text)
         
         let parameters = [
             "username": username.text,
@@ -39,7 +35,7 @@ class SignUpViewController: UIViewController {
             "phone": phoneNumber.text
         ]
         
-        Alamofire.request(.POST, "http://httpbin.org/post", parameters: parameters, encoding: .JSON)
+        Alamofire.request(.POST, "http://localhost:7777/signup", parameters: parameters, encoding: .JSON)
             .responseJSON {(request, response, JSON, error) in
                 println(JSON)
             }
