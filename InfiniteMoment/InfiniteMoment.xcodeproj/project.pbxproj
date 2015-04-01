@@ -15,6 +15,7 @@
 		130DE6761ACB0C32003676EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 130DE6751ACB0C32003676EC /* Images.xcassets */; };
 		130DE6791ACB0C32003676EC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130DE6771ACB0C32003676EC /* LaunchScreen.xib */; };
 		130DE6851ACB0C32003676EC /* InfiniteMomentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130DE6841ACB0C32003676EC /* InfiniteMomentTests.swift */; };
+		130DE6911ACB839C003676EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130DE6901ACB839C003676EC /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		130DE67E1ACB0C32003676EC /* InfiniteMomentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfiniteMomentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		130DE6831ACB0C32003676EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		130DE6841ACB0C32003676EC /* InfiniteMomentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteMomentTests.swift; sourceTree = "<group>"; };
+		130DE6901ACB839C003676EC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		130DE65C1ACB0C32003676EC = {
 			isa = PBXGroup;
 			children = (
+				130DE6901ACB839C003676EC /* LoginViewController.swift */,
 				130DE6671ACB0C32003676EC /* InfiniteMoment */,
 				130DE6811ACB0C32003676EC /* InfiniteMomentTests */,
 				130DE6661ACB0C32003676EC /* Products */,
@@ -221,6 +224,7 @@
 				130DE66D1ACB0C32003676EC /* RootViewController.swift in Sources */,
 				130DE6711ACB0C32003676EC /* ModelController.swift in Sources */,
 				130DE66F1ACB0C32003676EC /* DataViewController.swift in Sources */,
+				130DE6911ACB839C003676EC /* LoginViewController.swift in Sources */,
 				130DE66B1ACB0C32003676EC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
