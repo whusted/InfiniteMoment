@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F823195F-1D71-4539-9209-447E58E098E0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>InfiniteMoment</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7E13730B4A2FD8558BD88980C85A5EC560DCEE42</key>
+		<string>https://github.com/whusted/InfiniteMoment</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>InfiniteMoment/InfiniteMoment.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7E13730B4A2FD8558BD88980C85A5EC560DCEE42</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/whusted/InfiniteMoment</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7E13730B4A2FD8558BD88980C85A5EC560DCEE42</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7E13730B4A2FD8558BD88980C85A5EC560DCEE42</string>
+			<key>IDESourceControlWCCName</key>
+			<string>IM</string>
+		</dict>
+	</array>
+</dict>
+</plist>
