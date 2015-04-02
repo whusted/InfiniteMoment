@@ -16,7 +16,7 @@ var accountFuncs = {
           if (found) {
             reply({
               error: "Username taken",
-              message: "Username " + user.username + " already exists"
+              message: "Username " + user.username + " is already taken"
             }).code(409);
           } else {
             Bcrypt.genSalt(10, function(err, salt) {
