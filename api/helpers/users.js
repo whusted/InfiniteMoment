@@ -10,6 +10,7 @@ var userFuncs = {
         User.find({username: new RegExp('^' + searchString + '.*$', "i")}, function (err, users) {
           if (!users.length) {
             reply({
+              message: "Unsuccessful",
               response: "No users found."
             });
           } else {
@@ -20,6 +21,7 @@ var userFuncs = {
               index++;
             });
             reply({
+              message: "Success",
               response: usersArr
             });
           }
@@ -50,6 +52,7 @@ var userFuncs = {
             user.friends.push(body.newFriend);
             user.save();
             reply({
+              message: "Success",
               id: user._id,
               name: user.name,
               username: user.username,
@@ -83,6 +86,7 @@ var userFuncs = {
           return 0;
         });
         reply({
+          message: "Success",
           response: sortedFriendsArray
         });
       }

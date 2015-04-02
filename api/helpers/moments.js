@@ -17,6 +17,7 @@ var momentFuncs = {
         });
         newMoment.save();
         reply({
+          message: "Success",
           id: moment._id,
           author: username,
           recipients: moment.recipients,
@@ -43,6 +44,7 @@ var momentFuncs = {
               return 0;
             });
             reply({
+              message: "Success",
               response: sortedMoments
             });
           });
@@ -77,6 +79,7 @@ var momentFuncs = {
               return 0;
             });
             reply({
+              message: "Success",
               response: sortedMoments
             });
           });

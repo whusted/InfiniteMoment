@@ -64,6 +64,7 @@ var accountFuncs = {
                       });
                     } else {
                       reply({
+                        message: "Success",
                         response: "Account authorized; note token",
                         token: token
                       });
@@ -104,6 +105,7 @@ var accountFuncs = {
               });
             } else {
               reply({
+                message: "Success",
                 response: "User's session has ended."
               });
             }
