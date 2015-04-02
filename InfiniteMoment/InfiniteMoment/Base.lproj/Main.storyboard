@@ -208,7 +208,7 @@
                                     <constraint firstAttribute="height" constant="30" id="xHn-GL-peX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Ing-g0-xiH"/>
