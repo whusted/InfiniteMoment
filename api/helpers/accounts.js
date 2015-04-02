@@ -7,30 +7,34 @@ var accountFuncs = {
     signup: function(request, reply) {
       var user = request.payload;
       if (user.password !== user.confirmPassword) {
-        reply("Passwords must match").code(400);
-      }
-
-      User.findOne({username: user.username}, function (err, found) {
-        if (found) {
-          reply("Username " + user.username + " already exists").code(409);
-        } else {
-          Bcrypt.genSalt(10, function(err, salt) {
-            Bcrypt.hash(user.password, salt, function (err, hash) {
-              var newUser = new User({
-                username: user.username,
-                password: hash,
-                phone: user.phone
-              });
-              newUser.save();
-              reply({
-                id: user._id,
-                username: user.username,
-                response: "Created a new user"
+        reply({
+          error: "Passwords don't match",
+          message: "Passwords must match"
+        }).code(400);
+      } else {
+        User.findOne({username: user.username}, function (err, found) {
+          if (found) {
+            reply("Username " + user.username + " already exists").code(409);
+          } else {
+            Bcrypt.genSalt(10, function(err, salt) {
+              Bcrypt.hash(user.password, salt, function (err, hash) {
+                var newUser = new User({
+                  username: user.username,
+                  password: hash,
+                  phone: user.phone
+                });
+                newUser.save();
+                reply({
+                  id: user._id,
+                  username: user.username,
+                  response: "Created a new user"
+                });
               });
             });
-          });
-        }
-      });
+          }
+        });
+      }
+      
     },
 
     login: function (request, reply) {

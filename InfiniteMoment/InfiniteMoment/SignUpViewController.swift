@@ -46,7 +46,6 @@ class SignUpViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
-                println(resp["error"])
             }
         
     }
