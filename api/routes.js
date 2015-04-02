@@ -42,15 +42,6 @@ var routes = [
   },
 
   {
-    method: 'GET',
-    path: '/user/:id',
-    handler: function (request, reply) {
-      reply('User', reply.params.id);
-    }
-
-  },
-
-  {
     method: 'POST',
     path: '/moments',
     config: {

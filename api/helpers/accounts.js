@@ -14,7 +14,10 @@ var accountFuncs = {
       } else {
         User.findOne({username: user.username}, function (err, found) {
           if (found) {
-            reply("Username " + user.username + " already exists").code(409);
+            reply({
+              error: "Username taken",
+              message: "Username " + user.username + " already exists"
+            }).code(409);
           } else {
             Bcrypt.genSalt(10, function(err, salt) {
               Bcrypt.hash(user.password, salt, function (err, hash) {
@@ -41,7 +44,10 @@ var accountFuncs = {
       var user = request.payload;
       User.findOne({username: user.username}, function (err, existingUser) {
         if (!existingUser) {
-          reply("Invalid username.").code(401);
+          reply({
+            error: "Invalid username.",
+            message: "Invalid username."
+          }).code(401);
         } else {
           Bcrypt.compare(user.password, existingUser.password, function (err, isValid) {
             if (isValid) {
@@ -52,16 +58,28 @@ var accountFuncs = {
                   existingUser.tokenExpiration = tokens.setExpiration();
                   existingUser.save(function(err) {
                     if (err) {
-                      reply(err);
+                      reply({
+                        error: "error", // yikes, man
+                        message: err
+                      });
                     } else {
-                      reply("Account authorized; note token: " + token);
+                      reply({
+                        response: "Account authorized; note token",
+                        token: token
+                      });
                     }
                   });
                 } else {
-                  reply("User is already logged in").code(403);
+                  reply({
+                    error: "Invalid login",
+                    message: "User is already logged in."
+                  }).code(403);
                 }
             } else {
-              reply("Invalid password.").code(401);
+              reply({
+                error: "Invalid password.",
+                message: "Invalid password."
+              }).code(401);
             }
           });
         }
@@ -72,14 +90,22 @@ var accountFuncs = {
       var token = request.headers.authorization;
       User.findOne({authToken: token}, function (err, existingUser) {
         if (!existingUser) {
-          reply("User already logged out.").code(401);
+          reply({
+            error: "Already logged out",
+            message: "User already logged out."
+          }).code(401);
         } else {
           setTokenToNull(existingUser);
           existingUser.save(function (err) {
             if (err) {
-              reply(err)
+              reply({
+                error: "error", // yikes, man
+                message: err
+              });
             } else {
-              reply("User's session has ended.");
+              reply({
+                response: "User's session has ended."
+              });
             }
           });
         }

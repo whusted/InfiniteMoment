@@ -42,7 +42,9 @@ var momentFuncs = {
               }
               return 0;
             });
-            reply(sortedMoments);
+            reply({
+              response: sortedMoments
+            });
           });
         }
       });
@@ -74,7 +76,9 @@ var momentFuncs = {
               }
               return 0;
             });
-            reply(sortedMoments);
+            reply({
+              response: sortedMoments
+            });
           });
         }
       });

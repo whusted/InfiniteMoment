@@ -9,7 +9,9 @@ var userFuncs = {
         var searchString = request.headers.search;
         User.find({username: new RegExp('^' + searchString + '.*$', "i")}, function (err, users) {
           if (!users.length) {
-            reply("No users found.");
+            reply({
+              response: "No users found."
+            });
           } else {
             var usersArr = [];
             var index = 0;
@@ -17,7 +19,9 @@ var userFuncs = {
               usersArr[index] = user.username;
               index++;
             });
-            reply(usersArr);
+            reply({
+              response: usersArr
+            });
           }
         });
       }
@@ -30,7 +34,10 @@ var userFuncs = {
       if (auth.checkAuthToken(user, reply)) {
         User.findOne({username: body.newFriend}, function (err, newFriend) {
           if (!newFriend) {
-            reply("The user you are trying to add as a friend does not exist.").code(404);
+            reply({
+              error: "No user",
+              message: "The user you are trying to add as a friend does not exist."
+            }).code(404);
           } else {
             var notFriends = true;
             for (var i = 0; i < user.friends.length; i++) {
@@ -50,7 +57,10 @@ var userFuncs = {
               response: "Added a new friend"
             });
             } else {
-              reply(body.newFriend + " is already your friend!").code(409);
+              reply({
+                error: "Already friends",
+                message: body.newFriend + " is already your friend!"
+              }).code(409);
             }
           }
         });
@@ -72,7 +82,9 @@ var userFuncs = {
           }
           return 0;
         });
-        reply(sortedFriendsArray);
+        reply({
+          response: sortedFriendsArray
+        });
       }
     });
   }
