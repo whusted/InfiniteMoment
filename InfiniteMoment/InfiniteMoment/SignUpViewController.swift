@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Lockbox
+import Security
 
 class SignUpViewController: UIViewController {
     
@@ -29,14 +31,14 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signup(sender: AnyObject) {
         
-        let parameters = [
+        let signupParameters = [
             "username": username.text,
             "password": password.text,
             "confirmPassword": confirmPassword.text,
             "phone": phoneNumber.text
         ]
         
-        Alamofire.request(.POST, "http://localhost:7777/signup", parameters: parameters, encoding: .JSON)
+        Alamofire.request(.POST, "http://localhost:7777/signup", parameters: signupParameters, encoding: .JSON)
             .responseJSON {(request, response, json, error) in
                 var resp = JSON(json!)
                 if (error != nil) {
@@ -45,8 +47,24 @@ class SignUpViewController: UIViewController {
                     var alert = UIAlertController(title: "Oops!", message: resp["message"].string, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
+                } else {
+                    Alamofire.request(.POST, "http://localhost:7777/sessions", parameters: ["username": self.username.text, "password": self.password.text], encoding: .JSON)
+                        .responseJSON {(request, response, json, error) in
+                            var resp = JSON(json!)
+                            if (error != nil) {
+                                NSLog("Error: \(error)")
+                            } else if (resp["error"] != nil) {
+                                var alert = UIAlertController(title: "Oops!", message: resp["message"].string, preferredStyle: UIAlertControllerStyle.Alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                                self.presentViewController(alert, animated: true, completion: nil)
+                            } else {
+                                println(resp["response"])
+                                let token = Lockbox.setString(resp["token"].string, forKey: "authToken")
+                            }
+                        
+                    }
                 }
-            }
+        }
         
     }
     @IBAction func dismiss(sender: AnyObject) {
