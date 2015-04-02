@@ -7,22 +7,43 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import Security
+import Lockbox
 
 class LoginViewController: UIViewController {
+
+    @IBOutlet weak var username: UITextField!
     
-    @IBOutlet weak var usernameField: UITextField!
-    
-    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var password: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     @IBAction func login(sender: AnyObject) {
-        let username = usernameField.text
-        let password = passwordField.text
         
-        println("username: " + username)
-        println("password: " + password)
+        let loginParameters = [
+            "username": username.text,
+            "password": password.text
+        ]
+        
+        Alamofire.request(.POST, "http://localhost:7777/sessions", parameters: loginParameters, encoding: .JSON)
+            .responseJSON {(request, response, json, error) in
+                var resp = JSON(json!)
+                if (error != nil) {
+                    NSLog("Error: \(error)")
+                } else if (resp["error"] != nil) {
+                    var alert = UIAlertController(title: "Oops!", message: resp["message"].string, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                } else {
+                    println(resp["response"])
+                    let token = Lockbox.setString(resp["token"].string, forKey: "authToken")
+                }
+                
+        }
     }
+
 }

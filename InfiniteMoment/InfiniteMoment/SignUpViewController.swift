@@ -53,10 +53,6 @@ class SignUpViewController: UIViewController {
                             var resp = JSON(json!)
                             if (error != nil) {
                                 NSLog("Error: \(error)")
-                            } else if (resp["error"] != nil) {
-                                var alert = UIAlertController(title: "Oops!", message: resp["message"].string, preferredStyle: UIAlertControllerStyle.Alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                                self.presentViewController(alert, animated: true, completion: nil)
                             } else {
                                 println(resp["response"])
                                 let token = Lockbox.setString(resp["token"].string, forKey: "authToken")
