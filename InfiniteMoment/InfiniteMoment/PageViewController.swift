@@ -16,10 +16,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
 
     
     override func viewDidLoad() {
-        let pageController = UIPageViewController(
-            transitionStyle: .Scroll,
-            navigationOrientation: .Horizontal,
-            options: nil)
 
         self.dataSource = self
         self.delegate = self

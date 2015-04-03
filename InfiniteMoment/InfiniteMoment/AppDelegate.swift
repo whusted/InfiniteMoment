@@ -15,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        var rootView: PageViewController = PageViewController()
+        let rootView = PageViewController(
+            transitionStyle: .Scroll,
+            navigationOrientation: .Horizontal,
+            options: nil)
         
         if let window = self.window{
             window.rootViewController = rootView
