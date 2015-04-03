@@ -46,7 +46,7 @@ var accountFuncs = {
         if (!existingUser) {
           reply({
             error: "Invalid username.",
-            message: "Please enter a valid"
+            message: "Please enter a valid username."
           }).code(401);
         } else {
           Bcrypt.compare(user.password, existingUser.password, function (err, isValid) {

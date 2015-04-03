@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
                 } else {
                     println(resp["response"])
                     let token = Lockbox.setString(resp["token"].string, forKey: "authToken")
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 }
                 
         }

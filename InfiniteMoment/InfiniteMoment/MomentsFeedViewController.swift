@@ -20,9 +20,9 @@ class MomentsFeedViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         println("In view will appear")
-        // let token = Lockbox.stringForKey("authToken")
+        let token = Lockbox.stringForKey("authToken")
         // if token is nil, go to login
-        let token = "aef0ceb0-d96c-11e4-8a34-bfe74b464e28"
+        //let token = "aef0ceb0-d96c-11e4-8a34-bfe74b464e28" // Hardcoded BS
         let URL = NSURL(string: "http://localhost:7777/momentsFeed")
         var mutableURLRequest = NSMutableURLRequest(URL: URL!)
         mutableURLRequest.setValue(token, forHTTPHeaderField: "Authorization")
@@ -38,9 +38,8 @@ class MomentsFeedViewController: UITableViewController {
                 println("invalid auth")
                 self.performSegueWithIdentifier("showLogin", sender: self)
             } else {
-                println("Oh shoot, logged in")
+                println("Logged in")
                 println(json)
-                println(json["error"])
             }
         }
         //super.viewWillAppear(true)
