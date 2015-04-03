@@ -8,16 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		130DE66B1ACB0C32003676EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130DE66A1ACB0C32003676EC /* AppDelegate.swift */; };
-		130DE66D1ACB0C32003676EC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130DE66C1ACB0C32003676EC /* RootViewController.swift */; };
-		130DE66F1ACB0C32003676EC /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130DE66E1ACB0C32003676EC /* DataViewController.swift */; };
-		130DE6711ACB0C32003676EC /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130DE6701ACB0C32003676EC /* ModelController.swift */; };
 		130DE6741ACB0C32003676EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130DE6721ACB0C32003676EC /* Main.storyboard */; };
 		130DE6761ACB0C32003676EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 130DE6751ACB0C32003676EC /* Images.xcassets */; };
 		130DE6791ACB0C32003676EC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130DE6771ACB0C32003676EC /* LaunchScreen.xib */; };
 		130DE6851ACB0C32003676EC /* InfiniteMomentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130DE6841ACB0C32003676EC /* InfiniteMomentTests.swift */; };
 		130DE6911ACB839C003676EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130DE6901ACB839C003676EC /* LoginViewController.swift */; };
 		13F5798B1ACC506400308892 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F5798A1ACC506400308892 /* SignUpViewController.swift */; };
-		13F5798D1ACDDB9400308892 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F5798C1ACDDB9400308892 /* PageContentViewController.swift */; };
+		13F5798F1ACDE28000308892 /* PageOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F5798E1ACDE28000308892 /* PageOneViewController.swift */; };
+		13F579911ACDE45600308892 /* PageTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F579901ACDE45500308892 /* PageTwoViewController.swift */; };
+		13F579931ACDEA7100308892 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F579921ACDEA7100308892 /* PageViewController.swift */; };
 		60F00CD193124B7DA950457B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93A19B3BAABF79A51405C092 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -35,9 +34,6 @@
 		130DE6651ACB0C32003676EC /* InfiniteMoment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteMoment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		130DE6691ACB0C32003676EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		130DE66A1ACB0C32003676EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		130DE66C1ACB0C32003676EC /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		130DE66E1ACB0C32003676EC /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		130DE6701ACB0C32003676EC /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		130DE6731ACB0C32003676EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		130DE6751ACB0C32003676EC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		130DE6781ACB0C32003676EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -46,7 +42,9 @@
 		130DE6841ACB0C32003676EC /* InfiniteMomentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteMomentTests.swift; sourceTree = "<group>"; };
 		130DE6901ACB839C003676EC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		13F5798A1ACC506400308892 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		13F5798C1ACDDB9400308892 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PageContentViewController.swift; path = InfiniteMoment/PageContentViewController.swift; sourceTree = "<group>"; };
+		13F5798E1ACDE28000308892 /* PageOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageOneViewController.swift; sourceTree = "<group>"; };
+		13F579901ACDE45500308892 /* PageTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTwoViewController.swift; sourceTree = "<group>"; };
+		13F579921ACDEA7100308892 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		6066E8C2769A090963DF42F1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		93A19B3BAABF79A51405C092 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D426ACE26F5B4BA0B55AFEEB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 		130DE65C1ACB0C32003676EC = {
 			isa = PBXGroup;
 			children = (
-				13F5798C1ACDDB9400308892 /* PageContentViewController.swift */,
 				130DE6721ACB0C32003676EC /* Main.storyboard */,
 				130DE6671ACB0C32003676EC /* InfiniteMoment */,
 				130DE6811ACB0C32003676EC /* InfiniteMomentTests */,
@@ -98,10 +95,10 @@
 			children = (
 				130DE66A1ACB0C32003676EC /* AppDelegate.swift */,
 				130DE6901ACB839C003676EC /* LoginViewController.swift */,
+				13F5798E1ACDE28000308892 /* PageOneViewController.swift */,
+				13F579901ACDE45500308892 /* PageTwoViewController.swift */,
+				13F579921ACDEA7100308892 /* PageViewController.swift */,
 				13F5798A1ACC506400308892 /* SignUpViewController.swift */,
-				130DE66C1ACB0C32003676EC /* RootViewController.swift */,
-				130DE66E1ACB0C32003676EC /* DataViewController.swift */,
-				130DE6701ACB0C32003676EC /* ModelController.swift */,
 				130DE6751ACB0C32003676EC /* Images.xcassets */,
 				130DE6771ACB0C32003676EC /* LaunchScreen.xib */,
 				130DE6681ACB0C32003676EC /* Supporting Files */,
@@ -303,10 +300,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13F5798B1ACC506400308892 /* SignUpViewController.swift in Sources */,
-				130DE66D1ACB0C32003676EC /* RootViewController.swift in Sources */,
-				130DE6711ACB0C32003676EC /* ModelController.swift in Sources */,
-				13F5798D1ACDDB9400308892 /* PageContentViewController.swift in Sources */,
-				130DE66F1ACB0C32003676EC /* DataViewController.swift in Sources */,
+				13F5798F1ACDE28000308892 /* PageOneViewController.swift in Sources */,
+				13F579911ACDE45600308892 /* PageTwoViewController.swift in Sources */,
+				13F579931ACDEA7100308892 /* PageViewController.swift in Sources */,
 				130DE6911ACB839C003676EC /* LoginViewController.swift in Sources */,
 				130DE66B1ACB0C32003676EC /* AppDelegate.swift in Sources */,
 			);
