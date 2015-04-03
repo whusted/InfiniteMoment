@@ -56,6 +56,18 @@ class SignUpViewController: UIViewController {
                             } else {
                                 println(resp["response"])
                                 let token = Lockbox.setString(resp["token"].string, forKey: "authToken")
+                                // Add self to friend list
+                                Alamofire.request(.POST, "http://localhost:7777/friends", parameters: ["Authorization": resp["token"].string!, "newFriend": self.username.text], encoding: .JSON)
+                                    .responseJSON {(request, response, json, error) in
+                                        var resp = JSON(json!)
+                                        if (error != nil) {
+                                            NSLog("Error: \(error)")
+                                        } else if (resp["error"] != nil) {
+                                            println("should never happen")
+                                        } else {
+                                            self.navigationController?.popToRootViewControllerAnimated(true)
+                                        }
+                                }
                             }
                         
                     }

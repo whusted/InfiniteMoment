@@ -96,7 +96,7 @@ var accountFuncs = {
             message: "User already logged out."
           }).code(401);
         } else {
-          setTokenToNull(existingUser);
+          tokens.setTokenToNull(existingUser);
           existingUser.save(function (err) {
             if (err) {
               reply({
