@@ -12,7 +12,7 @@ import UIKit
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     var index = 0
-    var identifiers: NSArray = ["FeedViewController", "CreationViewController", "FriendsListController"]
+    var identifiers: NSArray = ["MomentsFeedViewController", "TextCreationViewController", "FriendsListController"]
 
     
     override func viewDidLoad() {
@@ -24,7 +24,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         let startingViewController = viewControllerAtIndex(self.index)
         let viewControllers: NSArray = [startingViewController]
         self.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
-        println(self.index)
         
     }
     
@@ -34,14 +33,14 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         //first view controller = firstViewControllers navigation controller
         if index == 0 {
             println("At first one")
-            return storyboard.instantiateViewControllerWithIdentifier("FeedViewController") as UIViewController
+            return storyboard.instantiateViewControllerWithIdentifier("MomentsFeedViewController") as UIViewController
             
         }
         
         //second view controller = secondViewController's navigation controller
         if index == 1 {
             println("At second one")
-            return storyboard.instantiateViewControllerWithIdentifier("CreationViewController") as UIViewController
+            return storyboard.instantiateViewControllerWithIdentifier("TextCreationViewController") as UIViewController
         }
         
         if index == 2 {

@@ -113,7 +113,11 @@
         <!--Page View Controller-->
         <scene sceneID="t1K-AV-ZML">
             <objects>
-                <pageViewController storyboardIdentifier="rootViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="MnT-Vc-sRG" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="rootViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="MnT-Vc-sRG" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="vPa-kx-pMF" kind="presentation" id="T1V-17-lyt"/>
+                    </connections>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F0w-Bk-XT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-193" y="652"/>
@@ -288,10 +292,10 @@
             </objects>
             <point key="canvasLocation" x="871" y="-478"/>
         </scene>
-        <!--Page One View Controller-->
+        <!--Moments Feed View Controller-->
         <scene sceneID="6uK-sS-nWr">
             <objects>
-                <viewController storyboardIdentifier="FeedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eKM-Dp-vbd" customClass="PageOneViewController" customModule="InfiniteMoment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MomentsFeedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eKM-Dp-vbd" customClass="MomentsFeedViewController" customModule="InfiniteMoment" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZeD-Y9-SXw"/>
                         <viewControllerLayoutGuide type="bottom" id="9LP-wS-IBo"/>
@@ -315,10 +319,10 @@
             </objects>
             <point key="canvasLocation" x="629" y="196"/>
         </scene>
-        <!--Page Two View Controller-->
+        <!--Text Creation View Controller-->
         <scene sceneID="TjH-RG-JiO">
             <objects>
-                <viewController storyboardIdentifier="CreationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V0g-tH-jwp" customClass="PageTwoViewController" customModule="InfiniteMoment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TextCreationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V0g-tH-jwp" customClass="TextCreationViewController" customModule="InfiniteMoment" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FJO-8i-8yO"/>
                         <viewControllerLayoutGuide type="bottom" id="y8s-24-MHB"/>

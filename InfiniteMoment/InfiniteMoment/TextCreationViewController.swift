@@ -1,17 +1,18 @@
 //
-//  PageTwoViewController.swift
+//  TextCreationViewController.swift
 //  InfiniteMoment
 //
-//  Created by Willy Husted on 4/2/15.
+//  Created by Willy Husted on 4/3/15.
 //  Copyright (c) 2015 Infinite Moment LLC. All rights reserved.
 //
 
 import UIKit
 
-class PageTwoViewController: UIViewController {
+class TextCreationViewController: UIViewController {
     
     override func viewDidLoad() {
-        println("In page 2")
+        println("In Text Creation")
         super.viewDidLoad()
     }
 }
+
