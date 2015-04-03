@@ -88,7 +88,7 @@ var accountFuncs = {
     },
 
     logout: function (request, reply) {
-      var token = request.headers.authorization;
+      var token = request.payload.Authorization;
       User.findOne({authToken: token}, function (err, existingUser) {
         if (!existingUser) {
           reply({

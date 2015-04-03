@@ -28,7 +28,8 @@ var momentFuncs = {
   },
 
   getMomentsCreatedByUser: function (request, reply) {
-      User.findOne({authToken: request.headers.authorization}, function (err, existingUser) {
+    var token = request.payload.Authorization;
+      User.findOne({authToken: token}, function (err, existingUser) {
         if (auth.checkAuthToken(existingUser, reply)) {
           var username = existingUser.username;
           Moment.find({ author: username }, function (err, moments) {
@@ -53,7 +54,8 @@ var momentFuncs = {
     },
 
     getMomentsFeed: function (request, reply) {
-      User.findOne({authToken: request.headers.authorization}, function (err, user) {
+      var token = request.payload.Authorization;
+      User.findOne({authToken: token}, function (err, user) {
         if (auth.checkAuthToken(user, reply)) {
           var username = user.username;
           Moment.find({ recipients: username }, function (err, moments) {
