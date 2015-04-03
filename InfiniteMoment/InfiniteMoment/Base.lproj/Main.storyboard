@@ -113,13 +113,7 @@
         <!--Page View Controller-->
         <scene sceneID="t1K-AV-ZML">
             <objects>
-                <pageViewController storyboardIdentifier="rootViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="MnT-Vc-sRG" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="eKM-Dp-vbd" kind="show" id="fbd-pb-9Uc"/>
-                        <segue destination="V0g-tH-jwp" kind="show" id="agS-V8-c6C"/>
-                        <segue destination="Zqb-Hu-TKO" kind="show" id="o6c-Hp-LCq"/>
-                    </connections>
-                </pageViewController>
+                <pageViewController storyboardIdentifier="rootViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="MnT-Vc-sRG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F0w-Bk-XT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-193" y="652"/>

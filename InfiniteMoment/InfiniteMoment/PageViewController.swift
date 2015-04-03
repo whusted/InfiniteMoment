@@ -16,20 +16,19 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
 
     
     override func viewDidLoad() {
+        let pageController = UIPageViewController(
+            transitionStyle: .Scroll,
+            navigationOrientation: .Horizontal,
+            options: nil)
+
         self.dataSource = self
         self.delegate = self
         
-        init(transitionStyle: UIPageViewControllerTransitionStyle.Scroll,
-            navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal,
-            options: nil) {
-                super.init
-        }
         
-        let startingViewController = self.viewControllerAtIndex(self.index)
+        let startingViewController = viewControllerAtIndex(self.index)
         let viewControllers: NSArray = [startingViewController]
         self.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
-        
-        
+        println(self.index)
         
     }
     
