@@ -4,10 +4,9 @@ var User = require('../models/user').User,
 
 var userFuncs = {
   searchForUsers: function (request, reply) {
-    var token = request.payload.Authorization;
-    User.findOne({authToken: token}, function (err, existingUser) {
+    User.findOne({authToken: request.headers.authorization}, function (err, existingUser) {
       if (auth.checkAuthToken(existingUser, reply)) {
-        var searchString = request.payload.search;
+        var searchString = request.headers.search;
         User.find({username: new RegExp('^' + searchString + '.*$', "i")}, function (err, users) {
           if (!users.length) {
             reply({
@@ -73,8 +72,7 @@ var userFuncs = {
   },
 
   getFriends: function (request, reply) {
-    var token = request.payload.Authorization;
-    User.findOne({authToken: token}, function (err, user) {
+    User.findOne({authToken: request.headers.authorization}, function (err, user) {
       if (auth.checkAuthToken(user, reply)) {
         var sortedFriendsArray = user.friends.sort(function (a, b) {
           var nameA = a.toLowerCase(),

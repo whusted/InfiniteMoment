@@ -46,7 +46,7 @@ var accountFuncs = {
         if (!existingUser) {
           reply({
             error: "Invalid username.",
-            message: "Please enter a valid username."
+            message: "Please enter a valid"
           }).code(401);
         } else {
           Bcrypt.compare(user.password, existingUser.password, function (err, isValid) {
@@ -79,7 +79,7 @@ var accountFuncs = {
             } else {
               reply({
                 error: "Invalid password.",
-                message: "Password was incorrect. Please try again."
+                message: "Invalid password."
               }).code(401);
             }
           });
@@ -88,7 +88,7 @@ var accountFuncs = {
     },
 
     logout: function (request, reply) {
-      var token = request.payload.Authorization;
+      var token = request.headers.authorization;
       User.findOne({authToken: token}, function (err, existingUser) {
         if (!existingUser) {
           reply({
@@ -96,7 +96,7 @@ var accountFuncs = {
             message: "User already logged out."
           }).code(401);
         } else {
-          tokens.setTokenToNull(existingUser);
+          setTokenToNull(existingUser);
           existingUser.save(function (err) {
             if (err) {
               reply({

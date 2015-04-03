@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		13042B791ACF03F5006DFFD2 /* TextCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13042B781ACF03F5006DFFD2 /* TextCreationViewController.swift */; };
-		13042B7B1ACF0455006DFFD2 /* MomentsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13042B7A1ACF0455006DFFD2 /* MomentsFeedViewController.swift */; };
+		13042B7D1ACF2D36006DFFD2 /* MomentsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13042B7C1ACF2D36006DFFD2 /* MomentsFeedViewController.swift */; };
+		13042B7F1ACF2E75006DFFD2 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13042B7E1ACF2E75006DFFD2 /* FriendsListViewController.swift */; };
 		130DE66B1ACB0C32003676EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130DE66A1ACB0C32003676EC /* AppDelegate.swift */; };
 		130DE6741ACB0C32003676EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130DE6721ACB0C32003676EC /* Main.storyboard */; };
 		130DE6761ACB0C32003676EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 130DE6751ACB0C32003676EC /* Images.xcassets */; };
@@ -32,7 +33,8 @@
 
 /* Begin PBXFileReference section */
 		13042B781ACF03F5006DFFD2 /* TextCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCreationViewController.swift; sourceTree = "<group>"; };
-		13042B7A1ACF0455006DFFD2 /* MomentsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsFeedViewController.swift; sourceTree = "<group>"; };
+		13042B7C1ACF2D36006DFFD2 /* MomentsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentsFeedViewController.swift; sourceTree = "<group>"; };
+		13042B7E1ACF2E75006DFFD2 /* FriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		130DE6651ACB0C32003676EC /* InfiniteMoment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteMoment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		130DE6691ACB0C32003676EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		130DE66A1ACB0C32003676EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,8 +96,9 @@
 			isa = PBXGroup;
 			children = (
 				130DE66A1ACB0C32003676EC /* AppDelegate.swift */,
+				13042B7E1ACF2E75006DFFD2 /* FriendsListViewController.swift */,
 				130DE6901ACB839C003676EC /* LoginViewController.swift */,
-				13042B7A1ACF0455006DFFD2 /* MomentsFeedViewController.swift */,
+				13042B7C1ACF2D36006DFFD2 /* MomentsFeedViewController.swift */,
 				13F579921ACDEA7100308892 /* PageViewController.swift */,
 				13F5798A1ACC506400308892 /* SignUpViewController.swift */,
 				13042B781ACF03F5006DFFD2 /* TextCreationViewController.swift */,
@@ -301,9 +304,10 @@
 			files = (
 				13042B791ACF03F5006DFFD2 /* TextCreationViewController.swift in Sources */,
 				13F5798B1ACC506400308892 /* SignUpViewController.swift in Sources */,
+				13042B7F1ACF2E75006DFFD2 /* FriendsListViewController.swift in Sources */,
 				13F579931ACDEA7100308892 /* PageViewController.swift in Sources */,
 				130DE6911ACB839C003676EC /* LoginViewController.swift in Sources */,
-				13042B7B1ACF0455006DFFD2 /* MomentsFeedViewController.swift in Sources */,
+				13042B7D1ACF2D36006DFFD2 /* MomentsFeedViewController.swift in Sources */,
 				130DE66B1ACB0C32003676EC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

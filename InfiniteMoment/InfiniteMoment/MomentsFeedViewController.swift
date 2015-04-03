@@ -12,7 +12,7 @@ import SwiftyJSON
 import Security
 import Lockbox
 
-class MomentsFeedViewController: UIViewController {
+class MomentsFeedViewController: UITableViewController {
     override func viewDidLoad() {
         println("In Moments Feed")
         super.viewDidLoad()
@@ -22,14 +22,14 @@ class MomentsFeedViewController: UIViewController {
         println("In view will appear")
         // let token = Lockbox.stringForKey("authToken")
         // if token is nil, go to login
-        let token = "303943" // Not ever valid
+        let token = "aef0ceb0-d96c-11e4-8a34-bfe74b464e28"
         let URL = NSURL(string: "http://localhost:7777/momentsFeed")
         var mutableURLRequest = NSMutableURLRequest(URL: URL!)
         mutableURLRequest.setValue(token, forHTTPHeaderField: "Authorization")
         
         let manager = Alamofire.Manager.sharedInstance
         let request = manager.request(mutableURLRequest)
-        request.responseString { (request, response, json, error) in
+        request.responseJSON { (request, response, json, error) in
             let json = JSON(json!)
             if (error != nil) {
                 NSLog("Error: \(error)")
@@ -38,10 +38,11 @@ class MomentsFeedViewController: UIViewController {
                 println("invalid auth")
                 self.performSegueWithIdentifier("showLogin", sender: self)
             } else {
+                println("Oh shoot, logged in")
                 println(json)
                 println(json["error"])
             }
         }
-        super.viewWillAppear(true)
+        //super.viewWillAppear(true)
     }
 }
