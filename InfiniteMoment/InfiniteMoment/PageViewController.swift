@@ -86,10 +86,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController!) -> Int {
-        return self.identifiers.count
-    }
-    
+//    func presentationCountForPageViewController(pageViewController: UIPageViewController!) -> Int {
+//        return self.identifiers.count
+//    }
+
     func presentationIndexForPageViewController(pageViewController: UIPageViewController!) -> Int {
         return 0
     }
