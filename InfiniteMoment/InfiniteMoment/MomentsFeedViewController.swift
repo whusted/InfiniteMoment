@@ -18,18 +18,15 @@ class MomentsFeedViewController: UITableViewController {
     override func viewDidLoad() {
         println("In Moments Feed")
         super.viewDidLoad()
+        Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["Authorization": token]
     }
     
     override func viewWillAppear(animated: Bool) {
         println("In view will appear")
+        println(token)
         
-        let URL = NSURL(string: "http://localhost:7777/momentsFeed")
-        var mutableURLRequest = NSMutableURLRequest(URL: URL!)
-        mutableURLRequest.setValue(token, forHTTPHeaderField: "Authorization")
-        
-        let manager = Alamofire.Manager.sharedInstance
-        let request = manager.request(mutableURLRequest)
-        request.responseJSON { (request, response, json, error) in
+        Alamofire.request(.GET, "http://localhost:7777/momentsFeed")
+        .responseJSON { (request, response, json, error) in
             let json = JSON(json!)
             if (error != nil) {
                 NSLog("Error: \(error)")
@@ -45,13 +42,15 @@ class MomentsFeedViewController: UITableViewController {
         super.viewWillAppear(true)
     }
     @IBAction func logout(sender: AnyObject) {
-        
-        // TODO change to above look
-        Alamofire.request(.DELETE, "http://localhost:7777/sessions", parameters: ["Authorization": token])
+        Alamofire.request(.DELETE, "http://localhost:7777/sessions")
         .responseJSON { (request, response, json, error) in
-            println(error)
-            println(response)
-            println(json)
+            let json = JSON(json!)
+            if (error != nil) {
+                NSLog("Error: \(error)")
+            } else {
+                println(json)
+                self.performSegueWithIdentifier("showLogin", sender: self)
+            }
         }
         
     }
