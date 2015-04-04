@@ -310,7 +310,20 @@
                             <outlet property="delegate" destination="xVM-Sx-NfQ" id="4hz-WI-DlH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Moments" id="gay-HZ-hua"/>
+                    <navigationItem key="navigationItem" title="Moments" id="gay-HZ-hua">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="hg3-tq-YOo">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kr6-P5-8a9">
+                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="xVM-Sx-NfQ" eventType="touchUpInside" id="ulU-73-ShL"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="vPa-kx-pMF" kind="presentation" identifier="showLogin" animates="NO" id="4Je-iT-XKz"/>
                     </connections>

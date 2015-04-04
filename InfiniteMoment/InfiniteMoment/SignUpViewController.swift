@@ -65,7 +65,8 @@ class SignUpViewController: UIViewController {
                                         } else if (resp["error"] != nil) {
                                             println("should never happen")
                                         } else {
-                                            self.navigationController?.popToRootViewControllerAnimated(true)
+                                            println(resp)
+                                            self.navigationController?.popViewControllerAnimated(true)
                                         }
                                 }
                             }
