@@ -351,34 +351,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="IM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMN-Fd-wVA">
-                                <rect key="frame" x="273" y="140" width="54" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKD-B3-8al">
+                                <rect key="frame" x="399" y="319" width="46" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="27S-TW-eA3"/>
-                                    <constraint firstAttribute="width" constant="54" id="dqg-Wm-m9P"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHh-Hd-zbu">
-                                <rect key="frame" x="509" y="350" width="57" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="3tS-e8-v1R"/>
-                                    <constraint firstAttribute="width" constant="57" id="jlR-LI-NMD"/>
+                                    <constraint firstAttribute="width" constant="46" id="3nN-6l-Ckr"/>
+                                    <constraint firstAttribute="height" constant="30" id="Cuo-YH-vT1"/>
                                 </constraints>
                                 <state key="normal" title="Next &gt;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextButton:" destination="V0g-tH-jwp" eventType="touchUpInside" id="ReH-ym-qDm"/>
+                                    <action selector="nextButton:" destination="V0g-tH-jwp" eventType="touchUpInside" id="vqp-l2-MGT"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Create a new Moment..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="370-ty-1s3">
-                                <rect key="frame" x="100" y="352" width="401" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frM-db-Kx1">
+                                <rect key="frame" x="259" y="159" width="65" height="43"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="UQT-cU-aMI"/>
-                                    <constraint firstAttribute="width" constant="401" id="snA-d0-oka"/>
+                                    <constraint firstAttribute="height" constant="43" id="WeM-Wb-23J"/>
+                                    <constraint firstAttribute="width" constant="65" id="p9b-jl-cll"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Create a new Moment..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gBH-iH-qea">
+                                <rect key="frame" x="191" y="319" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Mfn-jO-aQG"/>
+                                    <constraint firstAttribute="width" constant="200" id="ppH-IA-Fdh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -386,17 +386,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="370-ty-1s3" secondAttribute="centerX" id="FcI-sB-zJx"/>
-                            <constraint firstAttribute="centerY" secondItem="370-ty-1s3" secondAttribute="centerY" id="Ils-jR-rLb"/>
-                            <constraint firstAttribute="centerY" secondItem="tMN-Fd-wVA" secondAttribute="centerY" id="PH5-o0-NTg"/>
-                            <constraint firstAttribute="centerX" secondItem="tMN-Fd-wVA" secondAttribute="centerX" id="RKE-Sx-i5W"/>
-                            <constraint firstAttribute="centerX" secondItem="qHh-Hd-zbu" secondAttribute="centerX" id="u9c-H7-JBk"/>
-                            <constraint firstAttribute="centerY" secondItem="qHh-Hd-zbu" secondAttribute="centerY" id="zzf-kF-KW6"/>
+                            <constraint firstAttribute="centerY" secondItem="aKD-B3-8al" secondAttribute="centerY" constant="-34" id="7Xw-0T-NOo"/>
+                            <constraint firstAttribute="centerX" secondItem="frM-db-Kx1" secondAttribute="centerX" constant="8.5" id="HiI-hn-7xT"/>
+                            <constraint firstAttribute="centerY" secondItem="gBH-iH-qea" secondAttribute="centerY" constant="-34" id="WZv-bh-ggY"/>
+                            <constraint firstAttribute="centerY" secondItem="frM-db-Kx1" secondAttribute="centerY" constant="119.5" id="aUP-fu-Bcl"/>
+                            <constraint firstAttribute="centerX" secondItem="gBH-iH-qea" secondAttribute="centerX" constant="9" id="i4Q-zQ-jGH"/>
+                            <constraint firstAttribute="centerX" secondItem="aKD-B3-8al" secondAttribute="centerX" constant="-122" id="zFp-IN-cgl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8iZ-cV-uVO"/>
                     <connections>
-                        <outlet property="textBox" destination="370-ty-1s3" id="6dO-11-xfm"/>
+                        <outlet property="textBox" destination="gBH-iH-qea" id="U6k-1H-qyk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKk-Mp-VLP" userLabel="First Responder" sceneMemberID="firstResponder"/>
