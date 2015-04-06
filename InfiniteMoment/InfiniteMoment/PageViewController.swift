@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
+var index = 0
+
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    var index = 0
     var identifiers: NSArray = ["MomentsFeedNavigationController", "TextCreationNavigationController", "FriendsListNavigationController"]
 
     
@@ -21,29 +22,25 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.delegate = self
         
         
-        let startingViewController = viewControllerAtIndex(self.index)
+        let startingViewController = viewControllerAtIndex(index)
         let viewControllers: NSArray = [startingViewController]
         self.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
         
     }
     
     func viewControllerAtIndex(index: Int) -> UINavigationController! {
-        println("index: \(index)")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         if index == 0 {
-            println("At first one")
             return storyboard.instantiateViewControllerWithIdentifier("MomentsFeedNavigationController") as UINavigationController
             
         }
         
         if index == 1 {
-            println("At second one")
             return storyboard.instantiateViewControllerWithIdentifier("TextCreationNavigationController") as UINavigationController
         }
         
         if index == 2 {
-            println("At third one")
             return storyboard.instantiateViewControllerWithIdentifier("FriendsListNavigationController") as UINavigationController
         }
         
@@ -52,36 +49,39 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
         let identifier = viewController.restorationIdentifier
-        let index = self.identifiers.indexOfObject(identifier!)
+        println("Id in after: \(identifier)")
+        let current_index = self.identifiers.indexOfObject(identifier!)
         
         //if the index is the end of the array, return nil since we dont want a view controller after the last one
-        if index == identifiers.count - 1 {
+        if current_index == identifiers.count - 1 {
             
             return nil
         }
         
         //increment the index to get the viewController after the current index
-        println("self.index before: \(self.index)")
-        self.index = self.index + 1
-        println("self.index after: \(self.index)")
-        return self.viewControllerAtIndex(self.index)
+        index = index + 1
+        println("index after: \(index)")
+        return self.viewControllerAtIndex(index)
         
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
         let identifier = viewController.restorationIdentifier
-        let index = self.identifiers.indexOfObject(identifier!)
+        println("Id in before: \(identifier)")
+        let current_index = self.identifiers.indexOfObject(identifier!)
+        println("index from id in before: \(index)")
         
         //if the index is 0, return nil since we dont want a view controller before the first one
-        if index == 0 {
+        if current_index == 0 {
             
             return nil
         }
         
         //decrement the index to get the viewController before the current one
-        self.index = self.index - 1
-        return self.viewControllerAtIndex(self.index)
+        index = index - 1
+        println("index before: \(index)")
+        return self.viewControllerAtIndex(index)
         
     }
     
