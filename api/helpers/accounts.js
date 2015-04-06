@@ -12,6 +12,7 @@ var accountFuncs = {
           message: "Passwords must match"
         }).code(400);
       } else {
+        console.log(User);
         User.findOne({username: user.username}, function (err, found) {
           if (found) {
             reply({

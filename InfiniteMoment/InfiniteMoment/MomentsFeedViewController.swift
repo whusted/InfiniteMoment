@@ -12,16 +12,15 @@ import SwiftyJSON
 import Security
 import Lockbox
 
-let token = Lockbox.stringForKey("authToken")
-
 class MomentsFeedViewController: UITableViewController {
     override func viewDidLoad() {
         println("In Moments Feed")
         super.viewDidLoad()
-        Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["Authorization": token]
     }
     
     override func viewWillAppear(animated: Bool) {
+        let token = Lockbox.stringForKey("authToken")
+        Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["Authorization": token]
         println("In view will appear")
         println(token)
         

@@ -28,16 +28,15 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func viewControllerAtIndex(index: Int) -> UINavigationController! {
+        println("index: \(index)")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        //first view controller = firstViewControllers navigation controller
         if index == 0 {
             println("At first one")
             return storyboard.instantiateViewControllerWithIdentifier("MomentsFeedNavigationController") as UINavigationController
             
         }
         
-        //second view controller = secondViewController's navigation controller
         if index == 1 {
             println("At second one")
             return storyboard.instantiateViewControllerWithIdentifier("TextCreationNavigationController") as UINavigationController
@@ -62,7 +61,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         }
         
         //increment the index to get the viewController after the current index
+        println("self.index before: \(self.index)")
         self.index = self.index + 1
+        println("self.index after: \(self.index)")
         return self.viewControllerAtIndex(self.index)
         
     }
