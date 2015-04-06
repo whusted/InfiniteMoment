@@ -33,7 +33,7 @@ class TextCreationViewController: UIViewController {
                 "content": textBox.text
             ]
             println(parameters)
-            // pass parameters to recipients view
+            // TODO: pass parameters to recipients view (friends list)
             
         }
     }
