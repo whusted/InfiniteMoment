@@ -15,8 +15,8 @@ class NavigationWrapperViewController: UINavigationController {
         return index
     }
     
-    func setIndex(n: Int) -> Int {
-        index = n;
-        return index
-    }
+//    func setIndex(n: Int) -> Int {
+//        index = n;
+//        return index
+//    }
 }

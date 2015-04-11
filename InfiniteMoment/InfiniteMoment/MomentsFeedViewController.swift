@@ -20,7 +20,13 @@ class MomentsFeedViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         let token = Lockbox.stringForKey("authToken")
-        Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["Authorization": token]
+        println(token)
+        if (token != nil) {
+            Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["Authorization": token]
+        } else {
+            self.performSegueWithIdentifier("showLogin", sender: self)
+        }
+        
         println("In view will appear")
         println(token)
         

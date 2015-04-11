@@ -24,7 +24,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         let startingViewController = viewControllerAtIndex(index)
         let viewControllers: NSArray = [startingViewController]
-        self.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: nil)
+        self.setViewControllers(viewControllers as [AnyObject], direction: .Forward, animated: false, completion: nil)
         
     }
     
@@ -32,16 +32,16 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         if index == 0 {
-            return storyboard.instantiateViewControllerWithIdentifier("MomentsFeedNavigationController") as UINavigationController
+            return storyboard.instantiateViewControllerWithIdentifier("MomentsFeedNavigationController") as! UINavigationController
             
         }
         
         if index == 1 {
-            return storyboard.instantiateViewControllerWithIdentifier("TextCreationNavigationController") as UINavigationController
+            return storyboard.instantiateViewControllerWithIdentifier("TextCreationNavigationController") as! UINavigationController
         }
         
         if index == 2 {
-            return storyboard.instantiateViewControllerWithIdentifier("FriendsListNavigationController") as UINavigationController
+            return storyboard.instantiateViewControllerWithIdentifier("FriendsListNavigationController") as! UINavigationController
         }
         
         return nil
