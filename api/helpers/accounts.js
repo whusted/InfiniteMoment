@@ -1,7 +1,8 @@
 var User = require('../models/user').User,
     Bcrypt = require('bcrypt'),
     Uuid = require('uuid'),
-    tokens = require('./tokens');
+    tokens = require('./tokens'),
+    auth = require('./authentication');
 
 var accountFuncs = {
     signup: function(request, reply) {
@@ -12,7 +13,6 @@ var accountFuncs = {
           message: "Passwords must match"
         }).code(400);
       } else {
-        console.log(User);
         User.findOne({username: user.username}, function (err, found) {
           if (found) {
             reply({
@@ -52,7 +52,7 @@ var accountFuncs = {
         } else {
           Bcrypt.compare(user.password, existingUser.password, function (err, isValid) {
             if (isValid) {
-                if (!existingUser.authToken) {
+                if (!existingUser.authToken || tokens.isExpired(existingUser.tokenExpiration)) {
                   var token = Uuid.v1();
                   // TODO: hash first
                   existingUser.authToken = token;
@@ -72,11 +72,11 @@ var accountFuncs = {
                     }
                   });
                 } else {
-                  reply({
-                    error: "Invalid login",
-                    message: "User is already logged in."
-                  }).code(403);
-                }
+                    reply({
+                      error: "Invalid login",
+                      message: "User is already logged in."
+                    }).code(403);
+                  } 
             } else {
               reply({
                 error: "Invalid password.",
