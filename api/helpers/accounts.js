@@ -52,31 +52,24 @@ var accountFuncs = {
         } else {
           Bcrypt.compare(user.password, existingUser.password, function (err, isValid) {
             if (isValid) {
-                if (!existingUser.authToken || tokens.isExpired(existingUser.tokenExpiration)) {
-                  var token = Uuid.v1();
-                  // TODO: hash first
-                  existingUser.authToken = token;
-                  existingUser.tokenExpiration = tokens.setExpiration();
-                  existingUser.save(function(err) {
-                    if (err) {
-                      reply({
-                        error: "error", // yikes, man
-                        message: err
-                      });
-                    } else {
-                      reply({
-                        message: "Success",
-                        response: "Account authorized; note token",
-                        token: token
-                      });
-                    }
+              var token = Uuid.v1();
+              // TODO: hash first
+              existingUser.authToken = token;
+              existingUser.tokenExpiration = tokens.setExpiration();
+              existingUser.save(function(err) {
+                if (err) {
+                  reply({
+                    error: "error", // yikes, man
+                    message: err
                   });
                 } else {
-                    reply({
-                      error: "Invalid login",
-                      message: "User is already logged in."
-                    }).code(403);
-                  } 
+                  reply({
+                    message: "Success",
+                    response: "Account authorized; note token",
+                    token: token
+                  });
+                }
+              });
             } else {
               reply({
                 error: "Invalid password.",
