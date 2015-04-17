@@ -14,6 +14,7 @@ import Lockbox
 class TextCreationViewController: UIViewController {
     
     @IBOutlet weak var textBox: UITextField!
+    var parameters = [String: String]()
     
     override func viewDidLoad() {
         println("In Text Creation")
@@ -29,12 +30,19 @@ class TextCreationViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
-            var parameters = [
+            self.parameters = [
                 "content": textBox.text
             ]
             println(parameters)
             // TODO: pass parameters to recipients view (friends list)
             
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "toRecipientsList") {
+            var recipients = segue.destinationViewController as! RecipientsListViewController;
+            recipients.parameters = parameters
         }
     }
     
