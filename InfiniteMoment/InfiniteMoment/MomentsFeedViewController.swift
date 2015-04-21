@@ -32,19 +32,27 @@ class MomentsFeedViewController: UITableViewController {
         
         Alamofire.request(.GET, "http://localhost:7777/momentsFeed")
         .responseJSON { (request, response, json, error) in
-            let json = JSON(json!)
-            if (error != nil) {
-                NSLog("Error: \(error)")
-            } else if (json["error"] != nil) {
-                // Invalid auth token; go to login
-                println("invalid auth")
-                self.performSegueWithIdentifier("showLogin", sender: self)
+            if (json != nil) {
+                let json = JSON(json!)
+                if (error != nil) {
+                    NSLog("Error: \(error)")
+                } else if (json["error"] != nil) {
+                    // Invalid auth token; go to login
+                    println("invalid auth")
+                    self.performSegueWithIdentifier("showLogin", sender: self)
+                } else {
+                    println("Already logged in")
+                    println(json)
+                }
             } else {
-                println("Already logged in")
-                println(json)
+                // TODO: Handle server error
+                var alert = UIAlertController(title: "Uh Oh", message: "Server not connected", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
+
         }
-        super.viewWillAppear(true)
+                    super.viewWillAppear(true)
     }
     @IBAction func logout(sender: AnyObject) {
         Alamofire.request(.DELETE, "http://localhost:7777/sessions")
