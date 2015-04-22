@@ -131,10 +131,45 @@
                             <outlet property="delegate" destination="2fE-lD-3eo" id="3vx-2Z-abY"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="TM5-sa-yXy"/>
+                        <barButtonItem title="Next" id="BGI-zI-6Nd">
+                            <connections>
+                                <segue destination="TWD-rM-s1g" kind="show" identifier="showDatePicker" id="rvB-uW-kfI"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kqw-aS-665" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2157" y="842"/>
+            <point key="canvasLocation" x="2149" y="842"/>
+        </scene>
+        <!--Date Picker View Controller-->
+        <scene sceneID="gSw-gU-San">
+            <objects>
+                <viewController id="TWD-rM-s1g" customClass="DatePickerViewController" customModule="InfiniteMoment" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rIh-nP-Sff"/>
+                        <viewControllerLayoutGuide type="bottom" id="BNx-kf-fso"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qpi-RX-dwV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="leu-yS-6e0">
+                                <rect key="frame" x="0.0" y="213" width="600" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="451345540.51366001">
+                                    <!--2015-04-21 21:45:40 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ljm-eO-3Ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2869" y="842"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="r5w-0x-WEl">

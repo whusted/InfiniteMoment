@@ -20,6 +20,7 @@ class RecipientsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController!.toolbarHidden = false
         var params = parameters
         let token = Lockbox.stringForKey("authToken")
         println(token)

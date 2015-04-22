@@ -18,6 +18,7 @@
 		130DE6791ACB0C32003676EC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130DE6771ACB0C32003676EC /* LaunchScreen.xib */; };
 		130DE6851ACB0C32003676EC /* InfiniteMomentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130DE6841ACB0C32003676EC /* InfiniteMomentTests.swift */; };
 		130DE6911ACB839C003676EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130DE6901ACB839C003676EC /* LoginViewController.swift */; };
+		13DFF2781AE6FC4C00CA8062 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DFF2771AE6FC4C00CA8062 /* DatePickerViewController.swift */; };
 		13F5798B1ACC506400308892 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F5798A1ACC506400308892 /* SignUpViewController.swift */; };
 		13F579931ACDEA7100308892 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F579921ACDEA7100308892 /* PageViewController.swift */; };
 		60F00CD193124B7DA950457B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93A19B3BAABF79A51405C092 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -49,6 +50,7 @@
 		130DE6831ACB0C32003676EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		130DE6841ACB0C32003676EC /* InfiniteMomentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteMomentTests.swift; sourceTree = "<group>"; };
 		130DE6901ACB839C003676EC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
+		13DFF2771AE6FC4C00CA8062 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		13F5798A1ACC506400308892 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		13F579921ACDEA7100308892 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		6066E8C2769A090963DF42F1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				130DE66A1ACB0C32003676EC /* AppDelegate.swift */,
+				13DFF2771AE6FC4C00CA8062 /* DatePickerViewController.swift */,
 				13042B7E1ACF2E75006DFFD2 /* FriendsListViewController.swift */,
 				130DE6901ACB839C003676EC /* LoginViewController.swift */,
 				13042B7C1ACF2D36006DFFD2 /* MomentsFeedViewController.swift */,
@@ -315,6 +318,7 @@
 				13F5798B1ACC506400308892 /* SignUpViewController.swift in Sources */,
 				13042B7F1ACF2E75006DFFD2 /* FriendsListViewController.swift in Sources */,
 				13F579931ACDEA7100308892 /* PageViewController.swift in Sources */,
+				13DFF2781AE6FC4C00CA8062 /* DatePickerViewController.swift in Sources */,
 				130DE6911ACB839C003676EC /* LoginViewController.swift in Sources */,
 				13042B7D1ACF2D36006DFFD2 /* MomentsFeedViewController.swift in Sources */,
 				130DE66B1ACB0C32003676EC /* AppDelegate.swift in Sources */,
