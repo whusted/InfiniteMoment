@@ -157,15 +157,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="leu-yS-6e0">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="leu-yS-6e0">
                                 <rect key="frame" x="0.0" y="213" width="600" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="RyT-Ua-hvZ"/>
+                                    <constraint firstAttribute="width" constant="600" id="YT3-gs-Ohx"/>
+                                </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="451345540.51366001">
                                     <!--2015-04-21 21:45:40 +0000-->
                                 </date>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MM/DD/YY HH:MM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tab-aJ-ReY">
+                                <rect key="frame" x="224" y="109" width="153" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="b9W-fO-xMq"/>
+                                    <constraint firstAttribute="width" constant="153" id="yxK-kU-eEi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRx-2U-SmY">
+                                <rect key="frame" x="247" y="80" width="107" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="Dns-r6-TG4"/>
+                                    <constraint firstAttribute="height" constant="21" id="MiJ-Ih-2pe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Tab-aJ-ReY" secondAttribute="centerX" id="27f-ja-VFD"/>
+                            <constraint firstAttribute="centerY" secondItem="Tab-aJ-ReY" secondAttribute="centerY" constant="175" id="NDu-wX-fDW"/>
+                            <constraint firstAttribute="centerY" secondItem="leu-yS-6e0" secondAttribute="centerY" constant="6" id="OPa-GZ-Wtn"/>
+                            <constraint firstAttribute="centerY" secondItem="gRx-2U-SmY" secondAttribute="centerY" constant="209.5" id="a3X-Bt-Wge"/>
+                            <constraint firstAttribute="centerX" secondItem="leu-yS-6e0" secondAttribute="centerX" id="aOz-rf-4cj"/>
+                            <constraint firstAttribute="centerX" secondItem="gRx-2U-SmY" secondAttribute="centerX" id="p9H-79-YDK"/>
+                        </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zb6-GI-f7g"/>
+                        <barButtonItem title="Send" id="nN1-RI-Lw4">
+                            <connections>
+                                <action selector="sendMoment:" destination="TWD-rM-s1g" id="877-ij-r2l"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <connections>
+                        <outlet property="dateLabel" destination="Tab-aJ-ReY" id="b7E-Ab-s48"/>
+                        <outlet property="datePicker" destination="leu-yS-6e0" id="PrA-qo-gNL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ljm-eO-3Ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -45,5 +45,12 @@ class RecipientsListViewController: UITableViewController {
             cell.textLabel!.text = item
             return cell
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "showDatePicker") {
+            var picker = segue.destinationViewController as! DatePickerViewController;
+            picker.parameters = parameters
+        }
+    }
 
 }
