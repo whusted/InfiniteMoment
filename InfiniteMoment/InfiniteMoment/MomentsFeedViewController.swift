@@ -14,6 +14,7 @@ import Lockbox
 
 class MomentsFeedViewController: UITableViewController {
     var moments = Array<JSON>()
+    var username = String()
     override func viewDidLoad() {
         let token = Lockbox.stringForKey("authToken")
         println(token)
@@ -29,6 +30,7 @@ class MomentsFeedViewController: UITableViewController {
         
         getMoments("begin", completion: { (result) -> Void in
             println("Moments after getting them: \(self.moments)")
+            self.username = Lockbox.stringForKey("username")
             self.tableView.reloadData()
         })
         println("In Moments Feed")
@@ -70,7 +72,7 @@ class MomentsFeedViewController: UITableViewController {
         println("Moments when trying to display: \(self.moments)")
         let content = self.moments[indexPath.row]["content"].string
         let author : String
-        if (self.moments[indexPath.row]["author"].string == "test3") {  //TODO: generalize test of self to username
+        if (self.moments[indexPath.row]["author"].string == self.username) {
             author = "Yourself"
         } else {
             author = self.moments[indexPath.row]["author"].string!

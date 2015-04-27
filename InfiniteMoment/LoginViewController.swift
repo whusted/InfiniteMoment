@@ -29,6 +29,8 @@ class LoginViewController: UIViewController {
             "password": password.text
         ]
         
+        let user_name = Lockbox.setString(username.text, forKey: "username")
+        
         Alamofire.request(.POST, "http://localhost:7777/sessions", parameters: loginParameters, encoding: .JSON)
             .responseJSON {(request, response, json, error) in
                 var resp = JSON(json!)
