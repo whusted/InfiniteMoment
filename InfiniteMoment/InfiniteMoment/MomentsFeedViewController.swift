@@ -67,11 +67,18 @@ class MomentsFeedViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let item = self.moments[indexPath.row].string
+        println("Moments when trying to display: \(self.moments)")
+        let content = self.moments[indexPath.row]["content"].string
+        let author : String
+        if (self.moments[indexPath.row]["author"].string == "test3") {  //TODO: generalize test of self to username
+            author = "Yourself"
+        } else {
+            author = self.moments[indexPath.row]["author"].string!
+        }
+        let result = author + ": " + content!
         
         let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel!.text = item
+        cell.textLabel!.text = result
         return cell
     }
     
