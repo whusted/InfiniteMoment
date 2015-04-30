@@ -16,6 +16,10 @@ class MomentsFeedViewController: UITableViewController {
     var moments = Array<JSON>()
     var username = String()
     override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         let token = Lockbox.stringForKey("authToken")
         println(token)
         if (token != nil) {
@@ -23,8 +27,7 @@ class MomentsFeedViewController: UITableViewController {
         } else {
             self.performSegueWithIdentifier("showLogin", sender: self)
         }
-        
-        // TODO: get moments before loading table cells
+        self.tableView.reloadData()
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         
@@ -33,8 +36,6 @@ class MomentsFeedViewController: UITableViewController {
             self.username = Lockbox.stringForKey("username")
             self.tableView.reloadData()
         })
-        println("In Moments Feed")
-        super.viewDidLoad()
     }
     
     func getMoments(input: String, completion: (result: Bool) -> Void) {
@@ -64,12 +65,10 @@ class MomentsFeedViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("Moments in table view: \(self.moments)")
         return self.moments.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        println("Moments when trying to display: \(self.moments)")
         let content = self.moments[indexPath.row]["content"].string
         let author : String
         if (self.moments[indexPath.row]["author"].string == self.username) {

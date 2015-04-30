@@ -46,6 +46,23 @@ class RecipientsListViewController: UITableViewController {
             return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        println("indexPath: \(indexPath)")
+        
+        if indexPath.row != lastSelectedIndexPath?.row {
+            if let lastSelectedIndexPath = lastSelectedIndexPath {
+                let oldCell = tableView.cellForRowAtIndexPath(lastSelectedIndexPath)
+                oldCell?.accessoryType = .None
+            }
+            
+            let newCell = tableView.cellForRowAtIndexPath(indexPath)
+            newCell?.accessoryType = .Checkmark
+            
+            lastSelectedIndexPath = indexPath
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "showDatePicker") {
             var picker = segue.destinationViewController as! DatePickerViewController;

@@ -44,7 +44,6 @@ class TextCreationViewController: UIViewController {
         
     
     @IBAction func nextButton(sender: AnyObject) {
-    
         if textBox.text.isEmpty {
             var alert = UIAlertController(title: "Oops!", message: "No one wants a blank Moment!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
