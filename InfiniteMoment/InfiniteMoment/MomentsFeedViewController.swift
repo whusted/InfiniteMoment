@@ -46,8 +46,6 @@ class MomentsFeedViewController: UITableViewController {
                     if (error != nil) {
                         NSLog("Error: \(error)")
                     } else if (json["error"] != nil) {
-                        // Invalid auth token; go to login
-                        println("invalid auth")
                         self.performSegueWithIdentifier("showLogin", sender: self)
                     } else {
                         println("Already logged in")

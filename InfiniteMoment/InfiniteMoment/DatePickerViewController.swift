@@ -53,7 +53,6 @@ class DatePickerViewController: UIViewController {
     }
     
     @IBAction func sendMoment(sender: AnyObject) {
-        // Reformat to ISO 8601 date before sending
         deliverMoment()
     }
     
