@@ -14,7 +14,7 @@ import Security
 
 class RecipientsListViewController: UITableViewController {
     
-    var parameters = Dictionary<String, String>()
+    var parameters = Dictionary<String, AnyObject>()
     var friends = Array<JSON>()
     var recipients = Array<String>()
     
@@ -72,6 +72,7 @@ class RecipientsListViewController: UITableViewController {
         if (segue.identifier == "showDatePicker") {
             var picker = segue.destinationViewController as! DatePickerViewController;
             picker.parameters = parameters
+            picker.recipients = recipients
         }
     }
 

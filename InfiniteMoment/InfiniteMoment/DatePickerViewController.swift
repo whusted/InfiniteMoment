@@ -17,10 +17,13 @@ class DatePickerViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     var parameters = Dictionary<String, AnyObject>()
+    var recipients = Array<String>()
     let token = Lockbox.stringForKey("authToken")
     
     override func viewDidLoad() {
-        println(token)
+        for name in recipients {
+            println(name)
+        }
         println(parameters)
         parameters["Authorization"] = self.token
         super.viewDidLoad()
@@ -55,7 +58,7 @@ class DatePickerViewController: UIViewController {
     }
     
     func deliverMoment() {
-        parameters["recipients"] = ["test3"]
+        parameters["recipients"] = self.recipients
         parameters["deliveryDate"] = formatDate(datePicker)
         println("params: \(parameters)")
         Alamofire.request(.POST, "http://localhost:7777/moments", parameters: parameters, encoding: .JSON)

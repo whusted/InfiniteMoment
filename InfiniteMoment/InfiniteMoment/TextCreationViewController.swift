@@ -14,7 +14,7 @@ import Lockbox
 class TextCreationViewController: UIViewController {
     
     @IBOutlet weak var textBox: UITextField!
-    var parameters = [String: String]()
+    var parameters = Dictionary<String, AnyObject>()
     var friends = Array<JSON>()
     
     override func viewDidLoad() {
