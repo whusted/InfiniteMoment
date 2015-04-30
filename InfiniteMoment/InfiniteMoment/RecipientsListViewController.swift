@@ -49,16 +49,14 @@ class RecipientsListViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        if (cell!.accessoryView == nil) {
-            cell!.accessoryView = [MSCellAccessory accessoryWithType:FLAT_CHECKMARK color:disclosureColor];
-            self.recipients addObject:user.objectId];
+        println(cell!.accessoryType)
+        if (cell!.accessoryType == .Checkmark) {
+            cell!.accessoryType = .None;
         } else {
-            cell!.accessoryView = nil;
-            self.recipients removeObject:user.objectId;
+            cell!.accessoryType = .Checkmark
         }
 
         println("Cell: \(cell!.textLabel!.text)")
-        cell?.accessoryType = .Checkmark
         
     }
     
