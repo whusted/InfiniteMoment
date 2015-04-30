@@ -16,6 +16,7 @@ class RecipientsListViewController: UITableViewController {
     
     var parameters = Dictionary<String, String>()
     var friends = Array<JSON>()
+    var recipients = Array<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,6 @@ class RecipientsListViewController: UITableViewController {
         }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
             let item = self.friends[indexPath.row].string
         
             let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
@@ -48,15 +48,23 @@ class RecipientsListViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        println(cell!.accessoryType)
-        if (cell!.accessoryType == .Checkmark) {
-            cell!.accessoryType = .None;
-        } else {
-            cell!.accessoryType = .Checkmark
+        let user = self.friends[indexPath.row]
+        println("User: \(user.string!)")
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            if (cell.accessoryType == .Checkmark) {
+                cell.accessoryType = .None;
+                self.recipients = self.recipients.filter( {$0 != user.string!})
+                for name in self.recipients {
+                    println(name)
+                }
+            } else {
+                cell.accessoryType = .Checkmark
+                self.recipients.append(user.string!)
+                for name in self.recipients {
+                    println(name)
+                }
+            }
         }
-
-        println("Cell: \(cell!.textLabel!.text)")
         
     }
     
