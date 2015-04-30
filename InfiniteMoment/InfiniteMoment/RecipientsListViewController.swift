@@ -48,19 +48,18 @@ class RecipientsListViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        println("indexPath: \(indexPath)")
-        
-        if indexPath.row != lastSelectedIndexPath?.row {
-            if let lastSelectedIndexPath = lastSelectedIndexPath {
-                let oldCell = tableView.cellForRowAtIndexPath(lastSelectedIndexPath)
-                oldCell?.accessoryType = .None
-            }
-            
-            let newCell = tableView.cellForRowAtIndexPath(indexPath)
-            newCell?.accessoryType = .Checkmark
-            
-            lastSelectedIndexPath = indexPath
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        if (cell!.accessoryView == nil) {
+            cell!.accessoryView = [MSCellAccessory accessoryWithType:FLAT_CHECKMARK color:disclosureColor];
+            self.recipients addObject:user.objectId];
+        } else {
+            cell!.accessoryView = nil;
+            self.recipients removeObject:user.objectId;
         }
+
+        println("Cell: \(cell!.textLabel!.text)")
+        cell?.accessoryType = .Checkmark
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
