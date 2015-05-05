@@ -19,11 +19,13 @@ class FriendsListViewController: UITableViewController {
     var usersSearched = Array<JSON>()
     
     var searchActive: Bool!
+    var usersFound: Bool!
     let token = Lockbox.stringForKey("authToken")
     
     
     override func viewDidLoad() {
         searchActive = false
+        usersFound = false
         if (token != nil) {
             println("not nil")
             Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["Authorization": token]
@@ -35,7 +37,8 @@ class FriendsListViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
+        println("Token: \(self.token)")
         getFriends("begin", completion: { (result) -> Void in
             println("Friends: \(self.friends)")
             self.tableView.reloadData()
@@ -43,15 +46,23 @@ class FriendsListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (searchActive! && usersFound! && self.usersSearched.count != 0) {
+            return self.usersSearched.count
+        }
         return self.friends.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let item = self.friends[indexPath.row].string
-        
         let cell = self.tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel!.text = item
-        cell.accessoryType = .Checkmark
+        if (searchActive! && usersFound! && self.usersSearched.count != 0) {
+            println("in here")
+            let item = self.usersSearched[indexPath.row].string
+            cell.textLabel!.text = item
+        } else {
+            let item = self.friends[indexPath.row].string
+            cell.textLabel!.text = item
+            cell.accessoryType = .Checkmark
+        }
         return cell
     }
     
@@ -68,11 +79,6 @@ class FriendsListViewController: UITableViewController {
                 }
             }
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        println("Token: \(self.token)")
-        
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -103,7 +109,9 @@ class FriendsListViewController: UITableViewController {
         if (searchActive!) {
             println("search is active")
             searchForUsers("begin", completion: { (result) -> Void in
-                println("Friends: \(self.friends)")
+                println("Searched results: \(self.usersSearched)")
+                self.usersFound = true
+                self.tableView.reloadData()
             })
         }
         self.tableView.reloadData()
@@ -138,7 +146,6 @@ class FriendsListViewController: UITableViewController {
                     // TODO: handle error
                 } else {
                     self.usersSearched = json["response"].arrayValue
-                    println(self.usersSearched)
                     completion(result: true)
                 }
         }
