@@ -517,14 +517,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search to add friends" id="mej-j5-g8X">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for Friends" id="MVe-o9-8yp">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="barTintColor" red="0.96078431372549022" green="0.5607843137254902" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                             <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="fm3-3T-48r" id="bGt-NS-6pJ"/>
-                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gBj-jY-RrV">
@@ -548,7 +545,6 @@
                 <searchDisplayController id="YBX-rf-Lu1">
                     <connections>
                         <outlet property="delegate" destination="fm3-3T-48r" id="FYu-UG-mAg"/>
-                        <outlet property="searchBar" destination="mej-j5-g8X" id="vtW-eZ-UGJ"/>
                         <outlet property="searchContentsController" destination="fm3-3T-48r" id="J8l-nb-VUr"/>
                         <outlet property="searchResultsDataSource" destination="fm3-3T-48r" id="16m-nt-Q41"/>
                         <outlet property="searchResultsDelegate" destination="fm3-3T-48r" id="JZw-cV-Gib"/>

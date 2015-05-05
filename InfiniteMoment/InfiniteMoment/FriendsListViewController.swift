@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FriendsListViewController: UITableViewController, UISearchResultsUpdating {
+class FriendsListViewController: UITableViewController {
     override func viewDidLoad() {
         println("In Friends List")
         super.viewDidLoad()
