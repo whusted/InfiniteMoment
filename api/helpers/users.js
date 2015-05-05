@@ -50,16 +50,16 @@ var userFuncs = {
               }
             }
             if (notFriends) {
-            user.friends.push(body.newFriend);
-            user.save();
-            reply({
-              message: "Success",
-              id: user._id,
-              name: user.name,
-              username: user.username,
-              newFriend: body.newFriend,
-              response: "Added a new friend"
-            });
+              user.friends.push(body.newFriend);
+              user.save();
+              reply({
+                message: "Success",
+                id: user._id,
+                name: user.name,
+                username: user.username,
+                newFriend: body.newFriend,
+                response: "Added a new friend"
+              });
             } else {
               reply({
                 error: "Already friends",

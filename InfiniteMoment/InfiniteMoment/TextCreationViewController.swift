@@ -15,32 +15,11 @@ class TextCreationViewController: UIViewController {
     
     @IBOutlet weak var textBox: UITextField!
     var parameters = Dictionary<String, AnyObject>()
-    var friends = Array<JSON>()
     
     override func viewDidLoad() {
-        getFriends("begin", completion: { (result) -> Void in
-            println("Friends: \(self.friends)")
-        })
         println("In Text Creation")
         super.viewDidLoad()
     }
-    
-    func getFriends(input: String, completion: (result: Bool) -> Void) {
-        Alamofire.request(.GET, "http://localhost:7777/friends")
-            .responseJSON { (request, response, json, error) in
-                let json = JSON(json!)
-                if (error != nil) {
-                    NSLog("Error: \(error)")
-                } else if (json["error"] != nil) {
-                    // TODO: handle error
-                } else {
-                    self.friends = json["response"].arrayValue
-                    println(self.friends)
-                    completion(result: true)
-                }
-        }
-    }
-    
         
     
     @IBAction func nextButton(sender: AnyObject) {
@@ -60,7 +39,6 @@ class TextCreationViewController: UIViewController {
         if (segue.identifier == "toRecipientsList") {
             var recipients = segue.destinationViewController as! RecipientsListViewController;
             recipients.parameters = parameters
-            recipients.friends = friends
         }
     }
     

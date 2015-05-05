@@ -19,7 +19,10 @@ class RecipientsListViewController: UITableViewController {
     var recipients = Array<String>()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        getFriends("begin", completion: { (result) -> Void in
+            println("Friends: \(self.friends)")
+            self.tableView.reloadData()
+        })
         
         self.navigationController!.toolbarHidden = false
         var params = parameters
@@ -31,7 +34,7 @@ class RecipientsListViewController: UITableViewController {
             // TODO: Take to login
         }
         
-        
+        super.viewDidLoad()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,6 +69,22 @@ class RecipientsListViewController: UITableViewController {
             }
         }
         
+    }
+    
+    func getFriends(input: String, completion: (result: Bool) -> Void) {
+        Alamofire.request(.GET, "http://localhost:7777/friends")
+            .responseJSON { (request, response, json, error) in
+                let json = JSON(json!)
+                if (error != nil) {
+                    NSLog("Error: \(error)")
+                } else if (json["error"] != nil) {
+                    // TODO: handle error
+                } else {
+                    self.friends = json["response"].arrayValue
+                    println(self.friends)
+                    completion(result: true)
+                }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

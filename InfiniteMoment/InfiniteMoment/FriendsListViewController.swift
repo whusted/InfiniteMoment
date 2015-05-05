@@ -67,16 +67,18 @@ class FriendsListViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if (searchActive!) {
+        if (searchActive! && usersFound! && self.usersSearched.count != 0) {
             let user = self.usersSearched[indexPath.row]
             println("User: \(user.string!)")
             if let cell = tableView.cellForRowAtIndexPath(indexPath) {
                 if (cell.accessoryType == .Checkmark) {
-                    cell.accessoryType = .None;
+                    // TODO: ADD UNFRIEND TO API
+                    // cell.accessoryType = .None;
                 } else {
                     cell.accessoryType = .Checkmark
                 }
             }
+            addFriend(user.string!)
         }
     }
     
@@ -150,6 +152,24 @@ class FriendsListViewController: UITableViewController {
                 }
         }
     }
+    
+    func addFriend(newFriend: String) {
+        Alamofire.request(.POST, "http://localhost:7777/friends", parameters: ["Authorization": self.token, "newFriend": newFriend], encoding: .JSON)
+            .responseJSON {(request, response, json, error) in
+                var resp = JSON(json!)
+                if (error != nil) {
+                    NSLog("Error: \(error)")
+                } else if (resp["error"] != nil) {
+                    var alert = UIAlertController(title: "Yay!", message: resp["message"].string, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                } else {
+                    println(resp["response"])
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                
+        }
 
+    }
 
 }
