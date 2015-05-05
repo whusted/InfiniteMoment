@@ -16,6 +16,7 @@ class FriendsListViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     var friends = Array<JSON>()
+    var usersSearched = Array<JSON>()
     
     var searchActive: Bool!
     let token = Lockbox.stringForKey("authToken")
@@ -32,6 +33,41 @@ class FriendsListViewController: UITableViewController {
         
         println("In Friends List")
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        getFriends("begin", completion: { (result) -> Void in
+            println("Friends: \(self.friends)")
+            self.tableView.reloadData()
+        })
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.friends.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let item = self.friends[indexPath.row].string
+        
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
+        cell.textLabel!.text = item
+        cell.accessoryType = .Checkmark
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if (searchActive!) {
+            let user = self.usersSearched[indexPath.row]
+            println("User: \(user.string!)")
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                if (cell.accessoryType == .Checkmark) {
+                    cell.accessoryType = .None;
+                } else {
+                    cell.accessoryType = .Checkmark
+                }
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -59,12 +95,23 @@ class FriendsListViewController: UITableViewController {
         searchActive = false
     }
     
-    func searchForUsers(input: String, completion: (result: Bool) -> Void) {
-        Alamofire.request(.GET, "http://localhost:7777/users")
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["Authorization": token, "search": searchText]
+        println(Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders)
+        println("Search text \(searchText)")
+        if (searchActive!) {
+            println("search is active")
+            searchForUsers("begin", completion: { (result) -> Void in
+                println("Friends: \(self.friends)")
+            })
+        }
+        self.tableView.reloadData()
+    }
+    
+    func getFriends(input: String, completion: (result: Bool) -> Void) {
+        Alamofire.request(.GET, "http://localhost:7777/friends")
             .responseJSON { (request, response, json, error) in
-                println(request)
-                println(response)
-                println(json)
                 let json = JSON(json!)
                 if (error != nil) {
                     NSLog("Error: \(error)")
@@ -78,18 +125,23 @@ class FriendsListViewController: UITableViewController {
         }
     }
     
-    
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = ["Authorization": token, "search": searchText]
-        println(Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders)
-        println("Search text \(searchText)")
-        if (searchActive!) {
-            println("search is active")
-            searchForUsers("begin", completion: { (result) -> Void in
-                println("Friends: \(self.friends)")
-            })
+    func searchForUsers(input: String, completion: (result: Bool) -> Void) {
+        Alamofire.request(.GET, "http://localhost:7777/users")
+            .responseJSON { (request, response, json, error) in
+                println(request)
+                println(response)
+                println(json)
+                let json = JSON(json!)
+                if (error != nil) {
+                    NSLog("Error: \(error)")
+                } else if (json["error"] != nil) {
+                    // TODO: handle error
+                } else {
+                    self.usersSearched = json["response"].arrayValue
+                    println(self.usersSearched)
+                    completion(result: true)
+                }
         }
-        self.tableView.reloadData()
     }
 
 
