@@ -4,6 +4,7 @@ var User = require('../models/user').User,
 
 var userFuncs = {
   searchForUsers: function (request, reply) {
+    // TODO: catch null auth header before searching for user
     User.findOne({authToken: request.headers.authorization}, function (err, existingUser) {
       if (auth.checkAuthToken(existingUser, reply)) {
         var searchString = request.headers.search;

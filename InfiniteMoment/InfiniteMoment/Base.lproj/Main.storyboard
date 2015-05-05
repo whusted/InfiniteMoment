@@ -517,11 +517,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for Friends" id="MVe-o9-8yp">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for Friends" id="CHn-G0-BCn">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="barTintColor" red="0.96078431372549022" green="0.5607843137254902" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="fm3-3T-48r" id="kvQ-ND-BXa"/>
+                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gBj-jY-RrV">
@@ -538,7 +540,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Friends" id="x4d-CO-Cno"/>
                     <connections>
-                        <outlet property="searchDisplayController" destination="YBX-rf-Lu1" id="nvk-9A-1NV"/>
+                        <outlet property="searchBar" destination="CHn-G0-BCn" id="mrU-y7-w5u"/>
+                        <outlet property="searchDisplayController" destination="E0f-tE-BKm" id="gu4-2z-NbE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Fw-d3-ZcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -548,6 +551,15 @@
                         <outlet property="searchContentsController" destination="fm3-3T-48r" id="J8l-nb-VUr"/>
                         <outlet property="searchResultsDataSource" destination="fm3-3T-48r" id="16m-nt-Q41"/>
                         <outlet property="searchResultsDelegate" destination="fm3-3T-48r" id="JZw-cV-Gib"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="E0f-tE-BKm">
+                    <connections>
+                        <outlet property="delegate" destination="fm3-3T-48r" id="MqL-51-Rbf"/>
+                        <outlet property="searchBar" destination="CHn-G0-BCn" id="F9C-g0-yI8"/>
+                        <outlet property="searchContentsController" destination="fm3-3T-48r" id="unr-cx-acp"/>
+                        <outlet property="searchResultsDataSource" destination="fm3-3T-48r" id="5Wf-yd-qEj"/>
+                        <outlet property="searchResultsDelegate" destination="fm3-3T-48r" id="3fw-Wy-9nh"/>
                     </connections>
                 </searchDisplayController>
             </objects>

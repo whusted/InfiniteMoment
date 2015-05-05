@@ -32,7 +32,6 @@ class MomentsFeedViewController: UITableViewController {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         
         getMoments("begin", completion: { (result) -> Void in
-            println("Moments after getting them: \(self.moments)")
             self.username = Lockbox.stringForKey("username")
             self.tableView.reloadData()
         })
