@@ -95,7 +95,10 @@ class FriendsListViewController: UITableViewController {
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         println("cancelled")
         searchActive = false
-        self.tableView.reloadData()
+        getFriends("begin", completion: { (result) -> Void in
+            println("Friends: \(self.friends)")
+            self.tableView.reloadData()
+        })
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {

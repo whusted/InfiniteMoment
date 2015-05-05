@@ -110,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="2149" y="116"/>
         </scene>
-        <!--Recipients List View Controller-->
+        <!--Send To...-->
         <scene sceneID="skW-Wp-YME">
             <objects>
                 <tableViewController id="2fE-lD-3eo" customClass="RecipientsListViewController" customModule="InfiniteMoment" customModuleProvider="target" sceneMemberID="viewController">
@@ -139,6 +139,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" title="Send To..." id="mkS-vH-U0e"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kqw-aS-665" userLabel="First Responder" sceneMemberID="firstResponder"/>

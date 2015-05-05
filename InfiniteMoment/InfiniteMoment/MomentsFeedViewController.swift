@@ -80,6 +80,11 @@ class MomentsFeedViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
+    
     @IBAction func logout(sender: AnyObject) {
         Alamofire.request(.DELETE, "http://localhost:7777/sessions")
         .responseJSON { (request, response, json, error) in
