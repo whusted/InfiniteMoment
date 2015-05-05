@@ -55,7 +55,6 @@ class FriendsListViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as! UITableViewCell
         if (searchActive! && usersFound! && self.usersSearched.count != 0) {
-            println("in here")
             let item = self.usersSearched[indexPath.row].string
             cell.textLabel!.text = item
         } else {
@@ -94,6 +93,7 @@ class FriendsListViewController: UITableViewController {
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         println("cancelled")
         searchActive = false
+        self.tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
